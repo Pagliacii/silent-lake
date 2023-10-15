@@ -1,0 +1,64 @@
+# Basic config
+baseURL = "https://pagliacii.github.io/"
+languageCode = "zh-cn"
+title = "Jason's Blog"
+theme = "hugo-bearcub"
+copyright = "Jason Huang © 2023"
+defaultContentLanguage = "zh"
+
+# Generate a nice robots.txt for SEO
+enableRobotsTXT = true
+
+staticDir = ["static"]
+
+[author]
+name = "Jason Huang"
+
+[markup]
+[markup.highlight]
+anchorLineNos = false
+codeFences = true
+guessSyntax = false
+hl_Lines = ""
+lineAnchors = ""
+lineNoStart = 1
+lineNos = true
+lineNumbersInTable = false
+noClasses = false
+tabWidth = 4
+
+[languages]
+[languages.zh]
+title = "୧ʕ •ᴥ•ʔ୨ Pagliacii's Blog"
+languageName = "中文"
+LanguageCode = "zh-CN"
+contentDir = "content"
+[languages.zh.params]
+blogPath = "blog"
+madeWith = "Made With [Bear Club](https://github.com/clente/hugo-bearcub)"
+
+[params]
+title = "Jason's blog"
+description = "Jason's Blog"
+dateFormat = "2006-01-02"
+hideUntranslated = false
+favicon = "images/favicon.ico"
+images = ["/hugo-bearcub/images/share.webp"]
+
+[social]
+email = "huangmianrui0310@gmail.com"
+twitter = "PagliaciiH"
+github = "Pagliacii"
+
+[menu]
+[[menu.main]]
+identifier = "home"
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+identifier = "blog"
+name = "Blog"
+url = "/blog"
+weight = 2
