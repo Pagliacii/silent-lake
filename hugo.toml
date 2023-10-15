@@ -1,5 +1,5 @@
 # Basic config
-baseURL = "https://pagliacii.github.io/"
+baseURL = "https://pagliacii.github.io/silent-lake/"
 languageCode = "zh-cn"
 title = "Jason's Blog"
 theme = "hugo-bearcub"
