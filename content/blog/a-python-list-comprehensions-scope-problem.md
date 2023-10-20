@@ -1,7 +1,7 @@
 +++
 title = 'Python 列表推导式里变量未定义的问题'
 date = 2023-10-15T23:29:26+08:00
-draft = true
+draft = false
 tags = ['python', 'scope']
 style = "custom.css"
 +++
