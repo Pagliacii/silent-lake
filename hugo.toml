@@ -9,6 +9,9 @@ defaultContentLanguage = "zh"
 # Generate a nice robots.txt for SEO
 enableRobotsTXT = true
 
+enableEmoji = true
+enableGitInfo = true
+
 staticDir = ["static"]
 
 [author]
@@ -29,7 +32,7 @@ tabWidth = 4
 
 [languages]
 [languages.zh]
-title = "୧ʕ •ᴥ•ʔ୨ Pagliacii's Blog"
+title = "୧ʕ •ᴥ•ʔ୨ Silent Lake"
 languageName = "中文"
 LanguageCode = "zh-CN"
 contentDir = "content"
@@ -62,3 +65,9 @@ identifier = "blog"
 name = "Blog"
 url = "/blog"
 weight = 2
+
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags"
+weight = 3

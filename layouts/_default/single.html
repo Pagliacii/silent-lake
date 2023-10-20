@@ -1,0 +1,32 @@
+{{ define "main" }}
+{{ if not .Params.menu }}
+<h1>{{ .Title }}</h1>
+<p style="color: gray; font-size: 0.9rem">
+  Published:
+  <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
+    {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
+  </time>
+  | Updated:
+  <time datetime='{{ .Date.Format "2006-01-02" }}'>
+    {{ .Lastmod.Format (default "2006-01-02" .Site.Params.dateFormat) }}
+  </time>
+  |
+  <span>{{ .FuzzyWordCount }}</span>
+  <span>words</span>
+  |
+  <span>{{ .ReadingTime }}</span>
+  <span>mins</span>
+</p>
+{{ end }}
+{{ if or .Params.math .Site.Params.math }}
+{{ partial "math.html" . }}
+{{ end }}
+<content>
+  {{ .Content }}
+</content>
+<p>
+  {{ range (.GetTerms "tags") }}
+    <a class="blog-tags" href="{{ .Permalink }}">#{{ .LinkTitle }}</a>&nbsp;&nbsp;
+  {{ end }}
+</p>
+{{ end }}
