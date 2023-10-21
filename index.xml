@@ -4,4 +4,4 @@
 ℹ️ INFO 使用的 Python 版本为 3.11.2 TL;DR exec 在执行 Python 语句时有自己的局部作用域，同时列表推导式也有自己的局部作用域。在全局作用域里没有 d 这个变量的情况下，列表推导式并不能够获取到 exec 执行时的局部作用域里的 d。
 简化问题 首先可以把这个问题拆分成以下三个部分：
 最外层的 eval 函数的作用。 中间的 exec 函数的作用。 最里层的列表推导式。 eval 函数 在 repl 里输入 help(eval) 可以得到下面的这段输出：
-1eval(source, globals=None, locals=None, /) 2 Evaluate the given source in the context of globals and locals.</description></item></channel></rss>
+eval(source, globals=None, locals=None, /) Evaluate the given source in the context of globals and locals. The source may be a string representing a Python expression or a code object as returned by compile().</description></item></channel></rss>
