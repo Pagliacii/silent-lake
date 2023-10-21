@@ -12,8 +12,6 @@ enableRobotsTXT = true
 enableEmoji = true
 enableGitInfo = true
 
-staticDir = ["static"]
-
 [author]
 name = "Jason Huang"
 
@@ -46,28 +44,8 @@ description = "Jason's Blog"
 dateFormat = "2006-01-02"
 hideUntranslated = false
 favicon = "images/favicon.ico"
-images = ["/hugo-bearcub/images/share.webp"]
 
 [social]
 email = "huangmianrui0310@gmail.com"
 twitter = "PagliaciiH"
 github = "Pagliacii"
-
-[menu]
-[[menu.main]]
-identifier = "home"
-name = "Home"
-url = "/"
-weight = 1
-
-[[menu.main]]
-identifier = "blog"
-name = "Blog"
-url = "/blog"
-weight = 2
-
-[[menu.main]]
-identifier = "tags"
-name = "Tags"
-url = "/tags"
-weight = 3
