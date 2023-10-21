@@ -32,7 +32,7 @@ style = "custom.css"
 
 在 repl 里输入 `help(eval)` 可以得到下面的这段输出：
 
-```text
+```text {linenos=false}
 eval(source, globals=None, locals=None, /)
     Evaluate the given source in the context of globals and locals.
 
@@ -56,7 +56,7 @@ eval(source, globals=None, locals=None, /)
 
 需要被评估的代码是 `exec("d={};[d for i in range(1)]")` 和 `exec("d={};[d]")`，所以还是先看看 `exec` 函数的文档：
 
-```text
+```text {linenos=false}
 exec(source, globals=None, locals=None, /, *, closure=None)
     Execute the given source in the context of globals and locals.
 
@@ -159,7 +159,7 @@ print(T.c[0] == 1) # => True
 
 当时群里大佬提了一下可以用 [`dis`](https://docs.python.org/3/library/dis.html) 来查看 CPython 的 [bytecode](https://docs.python.org/3/glossary.html#term-bytecode)，就可以看到列表推导式里使用了 [LOAD_GLOBAL](https://docs.python.org/3/library/dis.html#opcode-LOAD_GLOBAL) 指令从全局作用域里加载变量。
 
-```plaintext {linenos=inline,hl_lines=[22],linenostart=1}
+```plaintext {linenos=false,hl_lines=[22],linenostart=1}
 >>> dis.dis("[a for _ in range(1)]")
   0           0 RESUME                   0
 
