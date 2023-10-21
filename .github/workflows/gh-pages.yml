@@ -38,7 +38,7 @@ jobs:
             ${{ runner.os }}-hugomod-
 
       - name: Build
-        run: hugo --minify
+        run: hugo --minify --gc --baseURL https://pagliacii.github.io/silent-lake/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
