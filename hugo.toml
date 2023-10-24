@@ -2,8 +2,8 @@
 baseURL = "https://pagliacii.github.io/silent-lake/"
 languageCode = "zh-cn"
 title = "Jason's Blog"
-theme = "hugo-bearcub"
-copyright = "Jason Huang © 2023"
+theme = "hugo-bearberry"
+copyright = "[Jason Huang](https://github.com/Pagliacii) © 2023"
 defaultContentLanguage = "zh"
 
 # Generate a nice robots.txt for SEO
@@ -20,13 +20,15 @@ name = "Jason Huang"
 anchorLineNos = false
 codeFences = true
 guessSyntax = false
-hl_Lines = ""
 lineAnchors = ""
 lineNoStart = 1
 lineNos = true
 lineNumbersInTable = false
 noClasses = false
 tabWidth = 4
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
 
 [languages]
 [languages.zh]
@@ -43,7 +45,29 @@ title = "Jason's blog"
 description = "Jason's Blog"
 dateFormat = "2006-01-02"
 hideUntranslated = false
+generateSocialCard = true
+
+# The path to your favicon
 favicon = "images/favicon.ico"
+favicon16 = "images/favicon-16x16.png"
+favicon32 = "images/favicon-32x32.png"
+apple_touch_icon = "images/apple-touch-icon.png"
+manifest = "images/site.webmanifest"
+safari_pinned_tab = "images/safari-pinned-tab.svg"
+msapplication_tilecolor = "#da532c"
+msapplication_config = "images/browserconfig.xml"
+theme_color = "#fff"
+
+# For information about giscus, see https://giscus.app/
+[params.giscus]
+repoName = "Pagliacii/silent-lake"
+repoID = "R_kgDOKgeurQ"
+category = "Comments"
+categoryID = "DIC_kwDOKgeurc4CaZsJ"
+mapping = "og:title"
+reactionsEnabled = true
+emitMetadata = true
+theme = "dark_tritanopia"
 
 [social]
 email = "huangmianrui0310@gmail.com"

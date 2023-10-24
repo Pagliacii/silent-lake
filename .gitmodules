@@ -1,0 +1,3 @@
+[submodule "themes/hugo-bearberry"]
+	path = themes/hugo-bearberry
+	url = https://github.com/Pagliacii/hugo-bearberry

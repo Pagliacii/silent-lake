@@ -1,2 +1,17 @@
+[filtering-for]
+other = "Filtering for"
+
+[no-posts]
+other = "No posts yet"
+
 [email-subject]
 other = "Reply to "
+
+[email-reply]
+other = "Reply to this post by email"
+
+[skip-link]
+other = "Skip to main content"
+
+[table-of-contents]
+other = "Table of Contents"

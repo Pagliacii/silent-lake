@@ -3,7 +3,7 @@ title = 'Python 列表推导式里变量未定义的问题'
 date = 2023-10-15T23:29:26+08:00
 draft = false
 tags = ['python', 'scope']
-style = "custom.css"
+toc = true
 +++
 
 之前在[捕蛇者说](https://pythonhunter.org/)的听众群里有人问了下面这个问题：
