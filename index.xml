@@ -1,6 +1,144 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on ୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/</link><description>Recent content in Home on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>Jason Huang © 2023</copyright><atom:link href="https://pagliacii.github.io/silent-lake/index.xml" rel="self" type="application/rss+xml"/><item><title>Python 列表推导式里变量未定义的问题</title><link>https://pagliacii.github.io/silent-lake/blog/a-python-list-comprehensions-scope-problem/</link><pubDate>Sun, 15 Oct 2023 23:29:26 +0800</pubDate><guid>https://pagliacii.github.io/silent-lake/blog/a-python-list-comprehensions-scope-problem/</guid><description>&lt;p>之前在&lt;a href="https://pythonhunter.org/">捕蛇者说&lt;/a>的听众群里有人问了下面这个问题：&lt;/p>
-&lt;blockquote>
-&lt;p>为什么 &lt;code>eval('''exec(&amp;quot;d={};[d for i in range(1)]&amp;quot;)''',{},{})&lt;/code> 会报错 NameError
-而 &lt;code>eval('''exec(&amp;quot;d={};[d for i in range(1)]&amp;quot;,None,{})''')&lt;/code> 和 &lt;code>eval('''exec(&amp;quot;d={};[d]&amp;quot;,None,{})''')&lt;/code> 都不会报错？&lt;/p>
-&lt;/blockquote>
-&lt;p>挺有趣的，为什么在有 &lt;code>d={}&lt;/code> 的情况下还会出现 &lt;code>NameError&lt;/code> 呢？下面就来分析看看。&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/</link><description>Recent content on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>[Jason Huang](https://github.com/Pagliacii) © 2023</copyright><atom:link href="https://pagliacii.github.io/silent-lake/index.xml" rel="self" type="application/rss+xml"/><item><title>Python 列表推导式里变量未定义的问题</title><link>https://pagliacii.github.io/silent-lake/blog/a-python-list-comprehensions-scope-problem/</link><pubDate>Sun, 15 Oct 2023 23:29:26 +0800</pubDate><guid>https://pagliacii.github.io/silent-lake/blog/a-python-list-comprehensions-scope-problem/</guid><description>之前在捕蛇者说的听众群里有人问了下面这个问题：
+为什么 eval('''exec(&amp;quot;d={};[d for i in range(1)]&amp;quot;)''',{},{}) 会报错 NameError 而 eval('''exec(&amp;quot;d={};[d for i in range(1)]&amp;quot;,None,{})''') 和 eval('''exec(&amp;quot;d={};[d]&amp;quot;,None,{})''') 都不会报错？
+挺有趣的，为什么在有 d={} 的情况下还会出现 NameError 呢？下面就来分析看看。</description><content:encoded><![CDATA[<p>之前在<a href="https://pythonhunter.org/">捕蛇者说</a>的听众群里有人问了下面这个问题：</p>
+<blockquote>
+<p>为什么 <code>eval('''exec(&quot;d={};[d for i in range(1)]&quot;)''',{},{})</code> 会报错 NameError
+而 <code>eval('''exec(&quot;d={};[d for i in range(1)]&quot;,None,{})''')</code> 和 <code>eval('''exec(&quot;d={};[d]&quot;,None,{})''')</code> 都不会报错？</p>
+</blockquote>
+<p>挺有趣的，为什么在有 <code>d={}</code> 的情况下还会出现 <code>NameError</code> 呢？下面就来分析看看。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ℹ️ INFO</th>
+<th style="text-align:center">使用的 Python 版本为 <strong>3.11.2</strong></th>
+</tr>
+</thead>
+</table>
+<h3 id="tldr">TL;DR</h3>
+<p><code>exec</code> 在执行 Python 语句时有自己的局部作用域，同时列表推导式也有自己的局部作用域。在全局作用域里没有 <code>d</code> 这个变量的情况下，列表推导式并不能够获取到 <code>exec</code> 执行时的局部作用域里的 <code>d</code>。</p>
+<h2 id="简化问题">简化问题</h2>
+<p>首先可以把这个问题拆分成以下三个部分：</p>
+<ol>
+<li>最外层的 <code>eval</code> 函数的作用。</li>
+<li>中间的 <code>exec</code> 函数的作用。</li>
+<li>最里层的列表推导式。</li>
+</ol>
+<h2 id="eval-函数"><code>eval</code> 函数</h2>
+<p>在 repl 里输入 <code>help(eval)</code> 可以得到下面的这段输出：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">eval(source, globals=None, locals=None, /)
+</span></span><span class="line"><span class="cl">    Evaluate the given source in the context of globals and locals.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    The source may be a string representing a Python expression
+</span></span><span class="line"><span class="cl">    or a code object as returned by compile().
+</span></span><span class="line"><span class="cl">    The globals must be a dictionary and locals can be any mapping,
+</span></span><span class="line"><span class="cl">    defaulting to the current globals and locals.
+</span></span><span class="line"><span class="cl">    If only globals is given, locals defaults to it.
+</span></span></code></pre></div><p>从上面的 help 文档，我们可以知道 <code>eval</code> 函数会去评估 (evaluate) 一条 Python 表达式 (<em>expression</em>)，并支持通过参数来指定 <strong>globals</strong> 和 <strong>locals</strong> 两个作用域<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。</p>
+<p>接着看回原来的问题，可以看到包含了两种情况：</p>
+<ol>
+<li><code>eval(source, {}, {})</code>: 在 <code>globals</code> 和 <code>locals</code> 都为空的条件下评估 <code>source</code></li>
+<li><code>eval(source, None, {})</code>: 在默认的 <code>globals</code> 以及空的 <code>locals</code> 下评估 <code>source</code></li>
+</ol>
+<p>那么接下来看看 <code>source</code> 是什么。</p>
+<h2 id="exec-函数"><code>exec</code> 函数</h2>
+<p>需要被评估的代码是 <code>exec(&quot;d={};[d for i in range(1)]&quot;)</code> 和 <code>exec(&quot;d={};[d]&quot;)</code>，所以还是先看看 <code>exec</code> 函数的文档：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">exec(source, globals=None, locals=None, /, *, closure=None)
+</span></span><span class="line"><span class="cl">    Execute the given source in the context of globals and locals.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    The source may be a string representing one or more Python statements
+</span></span><span class="line"><span class="cl">    or a code object as returned by compile().
+</span></span><span class="line"><span class="cl">    The globals must be a dictionary and locals can be any mapping,
+</span></span><span class="line"><span class="cl">    defaulting to the current globals and locals.
+</span></span><span class="line"><span class="cl">    If only globals is given, locals defaults to it.
+</span></span><span class="line"><span class="cl">    The closure must be a tuple of cellvars, and can only be used
+</span></span><span class="line"><span class="cl">    when source is a code object requiring exactly that many cellvars.
+</span></span></code></pre></div><p>也就是说 <code>exec</code> 函数会在给定的 <code>globals</code> 和 <code>locals</code> 下执行 Python 语句 (<em>statements</em>)。</p>
+<p>那么原来的问题也就可以简化为以下 4 种情况：</p>
+<ol>
+<li><code>exec(&quot;d={};[d for i in range(1)]&quot;, {}, {})</code></li>
+<li><code>exec(&quot;d={};[d for i in range(1)]&quot;, None, {})</code></li>
+<li><code>exec(&quot;d={};[d]&quot;, {}, {})</code></li>
+<li><code>exec(&quot;d={};[d]&quot;, None, {})</code></li>
+</ol>
+<p>所以什么情况下会出现 <code>NameError</code> 的异常呢？原因就在于 Python 中很常用的列表推导式身上。</p>
+<h2 id="列表推导式">列表推导式</h2>
+<p><code>exec</code> 函数执行的语句分别由两条语句组成，前者为赋值语句，后者则是构造一个列表，只不过构造方式有所差异。</p>
+<p><code>[d for i in range(1)]</code> 是一个列表推导式，而 <code>[d]</code> 则是一个列表字面量。</p>
+<p>第一眼看上去 <code>d={}</code> 这条赋值语句会在当前作用域添加一个变量 <code>d</code>，而后构造列表时应该可以访问到 <code>d</code> 才对，就像以下代码一样：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nb">print</span><span class="p">([</span><span class="n">d</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">)])</span>  <span class="c1"># =&gt; [{}]</span>
+</span></span></code></pre></div><p>既然现在出现了 <code>NameError</code> 的异常，也就说明列表推导式执行时找不到 <code>d</code> 这个变量，而 <code>d={}</code> 明显给 <code>d</code> 赋值了。<code>d</code> 到哪里去了？</p>
+<p>首先可以确定的是 <code>d</code> 是一定存在的，因为有赋值语句，只是现在找不到它而已。而 <code>d</code> 会存在的地方有两个，就是 <strong>globals</strong> 和 <strong>locals</strong> 这两个作用域的其中一个。</p>
+<p>原问题里是传了两个字典字面量，这不方便后续访问，我们可以用两个变量来替代：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">my_globals</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">my_locals</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">exec</span><span class="p">(</span><span class="s2">&#34;d = </span><span class="si">{}</span><span class="s2">; [d for i in range(1)]&#34;</span><span class="p">,</span> <span class="n">my_globals</span><span class="p">,</span> <span class="n">my_locals</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1"># NameError: name &#39;d&#39; is not defined</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">my_globals</span><span class="p">)</span>  <span class="c1"># =&gt; {}</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">my_locals</span><span class="p">)</span>  <span class="c1"># =&gt; {&#39;d&#39;: {}}</span>
+</span></span></code></pre></div><p><code>d</code> 出现了，在 <strong>locals</strong> 里。那么问题来了，既然在 <strong>locals</strong> 里，为啥列表推导式里会访问不了 <code>d</code> 呢？我们可以在列表推导式里获取 <strong>locals</strong>，比较一下有什么差别：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">my_locals</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">exec</span><span class="p">(</span><span class="s2">&#34;d = </span><span class="si">{}</span><span class="s2">; c = [locals() for i in range(1)]&#34;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">my_locals</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">my_locals</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1"># Result:</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="p">{},</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;.0&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">range_iterator</span> <span class="n">at</span> <span class="mh">0x1f65cbccd10</span><span class="o">&gt;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}]}</span>
+</span></span></code></pre></div><p>可以看到 <code>my_locals[&quot;c&quot;]</code> 的值并不等于 <code>my_locals</code>。那么问题原因基本上也就可以确定了，就是<strong>列表推导式有自己的局部作用域</strong>。</p>
+<p>而 <code>exec</code> 在执行语句的时候，也存在着自己的局部作用域，即我们传入的 <code>my_locals</code>。</p>
+<p>列表推导式只能访问它自己的局部作用域和全局作用域，但是默认的全局作用域里并没有 <code>d</code> 存在，所以会出现 <code>NameError</code>。</p>
+<p>那么如果我们分别在传入的 <code>my_globals</code> 和 <code>my_locals</code> 里保存一个不同值的 <code>d</code>，最终生成的列表是怎样的呢？</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">my_globals</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;d&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">my_locals</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;d&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">exec</span><span class="p">(</span><span class="s2">&#34;a = 1; c = [d for i in range(1)]&#34;</span><span class="p">,</span> <span class="n">my_globals</span><span class="p">,</span> <span class="n">my_locals</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">my_globals</span><span class="p">[</span><span class="s2">&#34;d&#34;</span><span class="p">])</span> <span class="c1"># =&gt; 1</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">my_locals</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="c1"># Result:</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
+</span></span></code></pre></div><h2 id="等价情况">等价情况</h2>
+<p>在 <a href="https://docs.python.org/3.11/library/functions.html#exec">Python 文档</a>里关于 <code>exec</code> 函数的说明里有这么一句话：</p>
+<blockquote>
+<p>If exec gets two separate objects as globals and locals, the code will be executed as if it were embedded in a class definition.</p>
+</blockquote>
+<p>那么上述代码就可以等价于以下代码：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="k">class</span> <span class="nc">T</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="c1"># print(locals()) =&gt; {&#39;__module__&#39;: &#39;__main__&#39;, &#39;__qualname__&#39;: &#39;T&#39;, &#39;a&#39;: 1, &#39;d&#39;: 2, &#39;c&#39;: [1]}</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">
+</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">T</span><span class="o">.</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># =&gt; True</span>
+</span></span></code></pre></div><h2 id="disassembly">Disassembly</h2>
+<p>当时群里大佬提了一下可以用 <a href="https://docs.python.org/3/library/dis.html"><code>dis</code></a> 来查看 CPython 的 <a href="https://docs.python.org/3/glossary.html#term-bytecode">bytecode</a>，就可以看到列表推导式里使用了 <a href="https://docs.python.org/3/library/dis.html#opcode-LOAD_GLOBAL">LOAD_GLOBAL</a> 指令从全局作用域里加载变量。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">&gt;&gt;&gt; dis.dis(&#34;[a for _ in range(1)]&#34;)
+</span></span><span class="line"><span class="cl">  0           0 RESUME                   0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  1           2 LOAD_CONST               0 (&lt;code object &lt;listcomp&gt; at 0x000002BD5774D0D0, file &#34;&lt;dis&gt;&#34;, line 1&gt;)
+</span></span><span class="line"><span class="cl">              4 MAKE_FUNCTION            0
+</span></span><span class="line"><span class="cl">              6 PUSH_NULL
+</span></span><span class="line"><span class="cl">              8 LOAD_NAME                0 (range)
+</span></span><span class="line"><span class="cl">             10 LOAD_CONST               1 (1)
+</span></span><span class="line"><span class="cl">             12 PRECALL                  1
+</span></span><span class="line"><span class="cl">             16 CALL                     1
+</span></span><span class="line"><span class="cl">             26 GET_ITER
+</span></span><span class="line"><span class="cl">             28 PRECALL                  0
+</span></span><span class="line"><span class="cl">             32 CALL                     0
+</span></span><span class="line"><span class="cl">             42 RETURN_VALUE
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disassembly of &lt;code object &lt;listcomp&gt; at 0x000002BD5774D0D0, file &#34;&lt;dis&gt;&#34;, line 1&gt;:
+</span></span><span class="line"><span class="cl">  1           0 RESUME                   0
+</span></span><span class="line"><span class="cl">              2 BUILD_LIST               0
+</span></span><span class="line"><span class="cl">              4 LOAD_FAST                0 (.0)
+</span></span><span class="line"><span class="cl">        &gt;&gt;    6 FOR_ITER                 9 (to 26)
+</span></span><span class="line"><span class="cl">              8 STORE_FAST               1 (_)
+</span></span><span class="line hl"><span class="cl">             10 LOAD_GLOBAL              0 (a)
+</span></span><span class="line"><span class="cl">             22 LIST_APPEND              2
+</span></span><span class="line"><span class="cl">             24 JUMP_BACKWARD           10 (to 6)
+</span></span><span class="line"><span class="cl">        &gt;&gt;   26 RETURN_VALUE
+</span></span></code></pre></div><div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://en.wikipedia.org/wiki/Scope_(computer_science)">https://en.wikipedia.org/wiki/Scope_(computer_science)</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>]]></content:encoded></item></channel></rss>
