@@ -1,6 +1,6 @@
 {
   "origins": [
-    "https://pagliacii.github.io/silent-lake/"
+    "https://pagliacii.github.io"
   ],
   "originsRegex": [
     "http://localhost:[0-9]+"
