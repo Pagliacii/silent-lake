@@ -159,7 +159,7 @@ print(T.c[0] == 1) # => True
 
 ## Disassembly
 
-当时群里大佬提了一下可以用 [`dis`](https://docs.python.org/3/library/dis.html) 来查看 CPython 的 [bytecode](https://docs.python.org/3/glossary.html#term-bytecode)，就可以看到列表推导式里使用了 [LOAD_GLOBAL](https://docs.python.org/3/library/dis.html#opcode-LOAD_GLOBAL) 指令从全局作用域里加载变量。
+当时群里[大佬](https://space.bilibili.com/245645656)提了一下可以用 [`dis`](https://docs.python.org/3/library/dis.html) 来查看 CPython 的 [bytecode](https://docs.python.org/3/glossary.html#term-bytecode)，就可以看到列表推导式里使用了 [LOAD_GLOBAL](https://docs.python.org/3/library/dis.html#opcode-LOAD_GLOBAL) 指令从全局作用域里加载变量。
 
 ```plaintext {linenos=false,hl_lines=[22],linenostart=1}
 >>> dis.dis("[a for _ in range(1)]")
