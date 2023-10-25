@@ -108,7 +108,7 @@
 </span></span><span class="line"><span class="ln">7</span><span class="cl">
 </span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">T</span><span class="o">.</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># =&gt; True</span>
 </span></span></code></pre></div><h2 id="disassembly">Disassembly</h2>
-<p>当时群里大佬提了一下可以用 <a href="https://docs.python.org/3/library/dis.html"><code>dis</code></a> 来查看 CPython 的 <a href="https://docs.python.org/3/glossary.html#term-bytecode">bytecode</a>，就可以看到列表推导式里使用了 <a href="https://docs.python.org/3/library/dis.html#opcode-LOAD_GLOBAL">LOAD_GLOBAL</a> 指令从全局作用域里加载变量。</p>
+<p>当时群里<a href="https://space.bilibili.com/245645656">大佬</a>提了一下可以用 <a href="https://docs.python.org/3/library/dis.html"><code>dis</code></a> 来查看 CPython 的 <a href="https://docs.python.org/3/glossary.html#term-bytecode">bytecode</a>，就可以看到列表推导式里使用了 <a href="https://docs.python.org/3/library/dis.html#opcode-LOAD_GLOBAL">LOAD_GLOBAL</a> 指令从全局作用域里加载变量。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">&gt;&gt;&gt; dis.dis(&#34;[a for _ in range(1)]&#34;)
 </span></span><span class="line"><span class="cl">  0           0 RESUME                   0
 </span></span><span class="line"><span class="cl">
