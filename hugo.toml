@@ -38,7 +38,7 @@ LanguageCode = "zh-CN"
 contentDir = "content"
 [languages.zh.params]
 blogPath = "blog"
-madeWith = "Made With [Bear Club](https://github.com/clente/hugo-bearcub)"
+madeWith = "Made With [Bear Berry](https://github.com/Pagliacii/hugo-bearberry)"
 
 [params]
 title = "Jason's blog"
