@@ -48,7 +48,7 @@ print(child.name) # AttributeError: 'Child' object has no attribute 'name'
 
 ## 问题描述
 
-问题出现在访问 `Child` 实例属性 `name` 时。虽然 `"name" in dir(child)` 返回 `True`，表明属性 `name` 存在，但是直接反问 `child.name` 却抛出了 `AttributeError`。
+问题出现在访问 `Child` 实例属性 `name` 时。虽然 `"name" in dir(child)` 返回 `True`，表明属性 `name` 存在，但是直接访问 `child.name` 却抛出了 `AttributeError`。
 
 这乍一看上去很奇怪，明明属性存在却无法访问，这是为什么呢？
 
