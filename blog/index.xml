@@ -35,7 +35,7 @@
 </span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="n">child</span> <span class="o">=</span> <span class="n">Child</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;name&#34;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">child</span><span class="p">))</span> <span class="c1"># True</span>
 </span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="c1"># AttributeError: &#39;Child&#39; object has no attribute &#39;name&#39;</span></span></span></code></pre></div><h2 id="问题描述">问题描述</h2>
-<p>问题出现在访问 <code>Child</code> 实例属性 <code>name</code> 时。虽然 <code>&quot;name&quot; in dir(child)</code> 返回 <code>True</code>，表明属性 <code>name</code> 存在，但是直接反问 <code>child.name</code> 却抛出了 <code>AttributeError</code>。</p>
+<p>问题出现在访问 <code>Child</code> 实例属性 <code>name</code> 时。虽然 <code>&quot;name&quot; in dir(child)</code> 返回 <code>True</code>，表明属性 <code>name</code> 存在，但是直接访问 <code>child.name</code> 却抛出了 <code>AttributeError</code>。</p>
 <p>这乍一看上去很奇怪，明明属性存在却无法访问，这是为什么呢？</p>
 <h2 id="分析过程">分析过程</h2>
 <p>要分析这个问题，首先我们需要对 Python 中属性查找的过程有一定了解。在 Python 中，当我们使用形如 <code>instance.attribute</code> 来访问实例属性时，会先在该实例对象上查找相应的属性，如果找不到就会抛出 <code>AttributeError</code>。而当我们给类加上了 <code>__getattr__</code> 方法时，Python 就会在找不到属性时调用这个<a href="https://docs.python.org/3/reference/datamodel.html#object.__getattr__">方法</a>。</p>
