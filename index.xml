@@ -77,7 +77,7 @@
 </span></span><span class="line"><span class="ln">26</span><span class="cl">      7         except KeyError:
 </span></span><span class="line"><span class="ln">27</span><span class="cl">----&gt; 8             raise AttributeError(
 </span></span><span class="line"><span class="ln">28</span><span class="cl">      9                 f&#34;&#39;{self.__class__.__name__}&#39; object has no attribute &#39;{name}&#39;&#34;,
-</span></span><span class="line"><span class="ln">29</span><span class="cl">     10             )</span></span></code></pre></div><p>从 traceback 信息中可以看到，<code>child.name</code> 这一次属性访问调用了父类 <code>Parent</code> 的 <code>__getattr__</code> 方法。但是在子类 <code>Child</code> 的定义中，<code>name</code> 这个属性是明显存在的，属性值是另一个 module 的属性。由于 <code>__getattr__</code> 只有在属性访问抛出 <code>AttributeError</code> 时才会被调用，那么问题根源应该就是另一个 module 里没有 <code>name</code> 这个属性，才会调用到 <code>__getattr__</code>。</p>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">     10             )</span></span></code></pre></div><p>从 traceback 信息中可以看到，<code>child.name</code> 这一次属性访问调用了父类 <code>Parent</code> 的 <code>__getattr__</code> 方法。但是在子类 <code>Child</code> 的定义中，<code>name</code> 这个属性是明显存在的，它的值是 <code>OtherModule</code> 的 <code>name</code> 属性。由于 <code>__getattr__</code> 只有在属性访问抛出 <code>AttributeError</code> 时才会被调用，那么问题根源应该就是 <code>OtherModule.name</code> 抛出了 <code>AttributeError</code>，才会调用到 <code>__getattr__</code>。</p>
 <p>事实上也是如此，<code>return OtherModule.name</code> 这一行抛出了 <code>AttributeError</code>，属性访问的行为 fallback 到了 <code>__getattr__</code>。</p>
 <h2 id="调试方法">调试方法</h2>
 <p>接下来说一下有什么方法可以用来调试这个问题。调试的目的就是为了弄清楚程序逻辑上有什么问题，通常来说有以下几种方法：</p>
