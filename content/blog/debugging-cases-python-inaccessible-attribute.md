@@ -94,7 +94,7 @@ AttributeError: 'Child' object has no attribute 'name'
      10             )
 ```
 
-从 traceback 信息中可以看到，`child.name` 这一次属性访问调用了父类 `Parent` 的 `__getattr__` 方法。但是在子类 `Child` 的定义中，`name` 这个属性是明显存在的，属性值是另一个 module 的属性。由于 `__getattr__` 只有在属性访问抛出 `AttributeError` 时才会被调用，那么问题根源应该就是另一个 module 里没有 `name` 这个属性，才会调用到 `__getattr__`。
+从 traceback 信息中可以看到，`child.name` 这一次属性访问调用了父类 `Parent` 的 `__getattr__` 方法。但是在子类 `Child` 的定义中，`name` 这个属性是明显存在的，它的值是 `OtherModule` 的 `name` 属性。由于 `__getattr__` 只有在属性访问抛出 `AttributeError` 时才会被调用，那么问题根源应该就是 `OtherModule.name` 抛出了 `AttributeError`，才会调用到 `__getattr__`。
 
 事实上也是如此，`return OtherModule.name` 这一行抛出了 `AttributeError`，属性访问的行为 fallback 到了 `__getattr__`。
 
