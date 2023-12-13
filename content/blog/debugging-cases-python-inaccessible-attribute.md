@@ -171,6 +171,36 @@ AttributeError: type object 'OtherModule' has no attribute 'name'
 (Pdb)
 ```
 
+## 用途
+
+看到这里你可能想问，`__getattr__` 这个方法有什么用处？接下来就举个例子，用它来实现 wrapper 类。
+
+```python
+class Wrapped:
+    def method1(self):
+        print("Called method1")
+
+    def method2(self):
+        print("Called method2")
+
+
+class Wrapper:
+    def __init__(self, wrapped):
+        self._wrapped = wrapped
+
+    def __getattr__(self, name):
+        print(f"Calling {name}")
+        return getattr(self._wrapped, name)
+
+
+w = Wrapper(Wrapped())
+w.method1()
+# Calling method1
+# Called method1
+```
+
+就像这样，可以很方便地在不修改原来对象的情况下实现对原来对象的方法调用的监控，比如可以加上日志，统计调用量或者加上额外处理等。
+
 ## Bonus
 
 在 Python [Data Model](https://docs.python.org/3/reference/datamodel.html) 文档里还有这样一个 [magic method](https://docs.python.org/3/reference/datamodel.html#object.__getattribute__): `__getattribute__`。它会在属性访问时无条件调用。
