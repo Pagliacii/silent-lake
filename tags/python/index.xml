@@ -149,7 +149,35 @@
 </span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="s1">&#39;__hash__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init_subclass__&#39;</span><span class="p">,</span> <span class="s1">&#39;__le__&#39;</span><span class="p">,</span> <span class="s1">&#39;__lt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__module__&#39;</span><span class="p">,</span>
 </span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="s1">&#39;__ne__&#39;</span><span class="p">,</span> <span class="s1">&#39;__new__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce_ex__&#39;</span><span class="p">,</span> <span class="s1">&#39;__repr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__setattr__&#39;</span><span class="p">,</span>
 </span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="s1">&#39;__sizeof__&#39;</span><span class="p">,</span> <span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;__subclasshook__&#39;</span><span class="p">,</span> <span class="s1">&#39;__weakref__&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span></span></span></code></pre></div><h2 id="bonus">Bonus</h2>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span></span></span></code></pre></div><h2 id="用途">用途</h2>
+<p>看到这里你可能想问，<code>__getattr__</code> 这个方法有什么用处？接下来就举个例子，用它来实现 wrapper 类。</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">class</span> <span class="nc">Wrapped</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="k">def</span> <span class="nf">method1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Called method1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="k">def</span> <span class="nf">method2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Called method2&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="k">class</span> <span class="nc">Wrapper</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapped</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped</span> <span class="o">=</span> <span class="n">wrapped</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Calling </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wrapped</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">
+</span></span><span class="line"><span class="ln">17</span><span class="cl">
+</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="n">w</span> <span class="o">=</span> <span class="n">Wrapper</span><span class="p">(</span><span class="n">Wrapped</span><span class="p">())</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="n">w</span><span class="o">.</span><span class="n">method1</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="c1"># Calling method1</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="c1"># Called method1</span></span></span></code></pre></div><p>就像这样，可以很方便地在不修改原来对象的情况下实现对原来对象的方法调用的监控，比如可以加上日志，统计调用量或者加上额外处理等。</p>
+<h2 id="bonus">Bonus</h2>
 <p>在 Python <a href="https://docs.python.org/3/reference/datamodel.html">Data Model</a> 文档里还有这样一个 <a href="https://docs.python.org/3/reference/datamodel.html#object.__getattribute__">magic method</a>: <code>__getattribute__</code>。它会在属性访问时无条件调用。</p>
 <blockquote>
 <p><strong>object.__getattribute__(self, name)</strong></p>
