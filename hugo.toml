@@ -5,15 +5,13 @@ title = "Jason's Blog"
 theme = "hugo-bearberry"
 copyright = "[Jason Huang](https://github.com/Pagliacii) © 2023"
 defaultContentLanguage = "zh"
+timeout = "60s"
 
 # Generate a nice robots.txt for SEO
 enableRobotsTXT = true
 
 enableEmoji = true
 enableGitInfo = true
-
-[author]
-name = "Jason Huang"
 
 [markup]
 [markup.highlight]
@@ -71,10 +69,13 @@ reactionsEnabled = true
 emitMetadata = true
 theme = "dark_tritanopia"
 
-[social]
-email = "huangmianrui0310@gmail.com"
+[params.social]
 twitter = "PagliaciiH"
 github = "Pagliacii"
+
+[params.author]
+name = "Jason Huang"
+email = "huangmianrui0310@gmail.com"
 
 # Optimize the performance for kroki diagrams
 [caches]
