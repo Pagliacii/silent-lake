@@ -1,4 +1,51 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/</link><description>Recent content on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © 2023</copyright><atom:link href="https://pagliacii.github.io/silent-lake/index.xml" rel="self" type="application/rss+xml"/><item><title>Python 之“无法访问”的属性</title><link>https://pagliacii.github.io/silent-lake/blog/debugging-cases-python-inaccessible-attribute/</link><pubDate>Thu, 07 Dec 2023 22:38:40 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/debugging-cases-python-inaccessible-attribute/</guid><description>&lt;p>最近碰到一个 Python 中的奇怪现象：明明在类定义里有着一个属性，但是在实例化后的对象上却无法访问到它，会抛出 &lt;code>AttributeError&lt;/code>。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/</link><description>Recent content on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © 2023</copyright><atom:link href="https://pagliacii.github.io/silent-lake/index.xml" rel="self" type="application/rss+xml"/><item><title>重置树莓派用户密码</title><link>https://pagliacii.github.io/silent-lake/blog/recover-passwd-raspberry-pi/</link><pubDate>Sun, 31 Mar 2024 23:39:25 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/recover-passwd-raspberry-pi/</guid><description>如果你也有在树莓派上跑服务的话，那么难免会碰到忘记用户密码的情况。这里记录一下如何在不重新安装系统的情况下重置密码。
+准备 首先你需要满足以下条件：
+可以接触到树莓派 一个显示器和一个键盘 一台电脑和一个读卡器 修改 cmdline.txt 文件 在断掉树莓派电源的情况下，把 SD 卡拔出来并通过读卡器连接到电脑上，在文件浏览器中找到它里面的 cmdline.txt 文件，然后用编辑器打开它。
+cmdline.txt 的内容是类似于下面这样的一行文本：
+dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait只需要在上面那行文本的最后加上 init=/bin/sh 来让树莓派系统启动后自动进入 /bin/sh，然后就可以把卡插回树莓派重新启动。
+修改密码 给树莓派接上显示器和键盘后，输入以下命令来重新挂载系统的根目录：
+$ mount -o remount, rw /接着就可以通过这条命令修改指定用户的密码了，我用的是 DietPi 镜像，所以这里以 dietpi 用户为例：
+$ passwd dietpi回车后输入两次密码，就可以输入下面两条命令来正常启动系统：
+$ sync $ exec /sbin/init恢复 cmdline.txt 文件 最后还需要再次拔出 SD 卡，把 cmdline.txt 文件里的 init=/bin/sh 移除后重启，就可以通过新密码正常登录了。</description><content:encoded><![CDATA[<p>如果你也有在<a href="https://www.raspberrypi.com/">树莓派</a>上跑服务的话，那么难免会碰到忘记用户密码的情况。这里记录一下如何在不重新安装系统的情况下重置密码。</p>
+<h2 id="准备">准备</h2>
+<p>首先你需要满足以下条件：</p>
+<ol>
+<li>可以接触到树莓派</li>
+<li>一个显示器和一个键盘</li>
+<li>一台电脑和一个读卡器</li>
+</ol>
+<h2 id="修改-cmdlinetxt-文件">修改 <code>cmdline.txt</code> 文件</h2>
+<p>在断掉树莓派电源的情况下，把 SD 卡拔出来并通过读卡器连接到电脑上，在文件浏览器中找到它里面的 <code>cmdline.txt</code> 文件，然后用编辑器打开它。</p>
+<p><code>cmdline.txt</code> 的内容是类似于下面这样的一行文本：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait</span></span></code></pre></div><p>只需要在上面那行文本的最后加上 <code>init=/bin/sh</code> 来让树莓派系统启动后自动进入 <code>/bin/sh</code>，然后就可以把卡插回树莓派重新启动。</p>
+<h2 id="修改密码">修改密码</h2>
+<p>给树莓派接上显示器和键盘后，输入以下命令来重新挂载系统的根目录：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ mount -o remount, rw /</span></span></code></pre></div><p>接着就可以通过这条命令修改指定用户的密码了，我用的是 <a href="https://dietpi.com/">DietPi</a> 镜像，所以这里以 <strong>dietpi</strong> 用户为例：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ passwd dietpi</span></span></code></pre></div><p>回车后输入两次密码，就可以输入下面两条命令来正常启动系统：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sync
+</span></span><span class="line"><span class="cl">$ <span class="nb">exec</span> /sbin/init</span></span></code></pre></div><h2 id="恢复-cmdlinetxt-文件">恢复 <code>cmdline.txt</code> 文件</h2>
+<p>最后还需要再次拔出 SD 卡，把 <code>cmdline.txt</code> 文件里的 <code>init=/bin/sh</code> 移除后重启，就可以通过新密码正常登录了。</p>
+]]></content:encoded></item><item><title>Python 之“无法访问”的属性</title><link>https://pagliacii.github.io/silent-lake/blog/debugging-cases-python-inaccessible-attribute/</link><pubDate>Thu, 07 Dec 2023 22:38:40 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/debugging-cases-python-inaccessible-attribute/</guid><description>&lt;p>最近碰到一个 Python 中的奇怪现象：明明在类定义里有着一个属性，但是在实例化后的对象上却无法访问到它，会抛出 &lt;code>AttributeError&lt;/code>。&lt;/p>
 &lt;p>虽然 root cause 很简单，但是我觉得这个案例可以作为 debug 的例子，于是就有了这篇文章。&lt;/p></description><content:encoded><![CDATA[<p>最近碰到一个 Python 中的奇怪现象：明明在类定义里有着一个属性，但是在实例化后的对象上却无法访问到它，会抛出 <code>AttributeError</code>。</p>
 <p>虽然 root cause 很简单，但是我觉得这个案例可以作为 debug 的例子，于是就有了这篇文章。</p>
 <h2 id="示例代码">示例代码</h2>
