@@ -10,7 +10,7 @@ tags = ["tips", "vim/neovim", "keybindings", "windows"]
 常见的 [QWERTY 键盘](https://en.wikipedia.org/wiki/QWERTY)会将 <kbd>CapsLock</kbd> 键放在 [Home row](https://en.wikipedia.org/wiki/Touch_typing#Home_row)
 的最左侧，也是最靠近左手小指的地方，如下图所示：
 
-![QWERTY 键盘的按键排列](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/KB_United_States.svg/2880px-KB_United_States.svg.png)
+![QWERTY 键盘的按键排列](https://github.com/user-attachments/assets/03b498d2-6700-4d6a-9268-1502faedb131)
 
 但在日常使用中，<kbd>CapsLock</kbd> 的使用频率很低。让这么一个使用频率低的键占据一个很方便按到的位置（**最靠近左手小指**)，实际上是一种浪费。
 你可以想想，如果是 <kbd>Ctrl</kbd> 或者 <kbd>Esc</kbd> 放在 <kbd>CapsLock</kbd> 的位置，是不是日常使用就不需要伸手指去“够”它们？只要挪一下小指就行了。
@@ -120,7 +120,7 @@ kanata 配置语法来自于和它相似的项目 [kmonad](https://github.com/km
 
 例如在 QWERTY 键盘上定义一个 [Dvorak](https://en.wikipedia.org/wiki/Dvorak_keyboard_layout) 布局层：
 
-![Dvorak layout](https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/KB_United_States_Dvorak.svg/2880px-KB_United_States_Dvorak.svg.png)
+![Dvorak layout](https://github.com/user-attachments/assets/ff8f84be-5e92-4884-95a2-e3b780736a9e)
 
 ```lisp
 ;; QWERTY 键盘 60 配列
