@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>keybindings on ୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/tags/keybindings/</link><description>Recent content in keybindings on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © 2024</copyright><lastBuildDate>Sun, 18 Aug 2024 11:51:20 +0800</lastBuildDate><atom:link href="https://pagliacii.github.io/silent-lake/tags/keybindings/index.xml" rel="self" type="application/rss+xml"/><item><title>将 CapsLock 映射成 Ctrl 和 Escape</title><link>https://pagliacii.github.io/silent-lake/blog/using-capslock-as-ctrl-and-escape/</link><pubDate>Sun, 18 Aug 2024 11:51:20 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/using-capslock-as-ctrl-and-escape/</guid><description>&lt;p>常见的 &lt;a href="https://en.wikipedia.org/wiki/QWERTY">QWERTY 键盘&lt;/a>会将 &lt;kbd>CapsLock&lt;/kbd> 键放在 &lt;a href="https://en.wikipedia.org/wiki/Touch_typing#Home_row">Home row&lt;/a>
+的最左侧，也是最靠近左手小指的地方，如下图所示：&lt;/p>
+&lt;p>&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/KB_United_States.svg/2880px-KB_United_States.svg.png" alt="QWERTY 键盘的按键排列">&lt;/p>
+&lt;p>但在日常使用中，&lt;kbd>CapsLock&lt;/kbd> 的使用频率很低。让这么一个使用频率低的键占据一个很方便按到的位置（&lt;strong>最靠近左手小指&lt;/strong>)，实际上是一种浪费。
+你可以想想，如果是 &lt;kbd>Ctrl&lt;/kbd> 或者 &lt;kbd>Esc&lt;/kbd> 放在 &lt;kbd>CapsLock&lt;/kbd> 的位置，是不是日常使用就不需要伸手指去“够”它们？只要挪一下小指就行了。
+特别是对于 &lt;a href="https://www.vim.org/">Vim&lt;/a>/&lt;a href="https://neovim.io/">Neovim&lt;/a>/&lt;a href="https://www.gnu.org/software/emacs/">Emacs&lt;/a>
+等用户来说，更是如虎添翼。&lt;/p>
+&lt;p>而且我们还可以做到更灵活的映射，即点按（tap）&lt;kbd>CapsLock&lt;/kbd> 时是 &lt;kbd>Esc&lt;/kbd>，长按（hold）则是 &lt;kbd>Ctrl&lt;/kbd>。
+这样在使用 &lt;strong>Vim/Neovim&lt;/strong> 的时候会更方便，无论是切换 mode 还是按键序列。&lt;/p></description><content:encoded><![CDATA[<p>常见的 <a href="https://en.wikipedia.org/wiki/QWERTY">QWERTY 键盘</a>会将 <kbd>CapsLock</kbd> 键放在 <a href="https://en.wikipedia.org/wiki/Touch_typing#Home_row">Home row</a>
+的最左侧，也是最靠近左手小指的地方，如下图所示：</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/KB_United_States.svg/2880px-KB_United_States.svg.png" alt="QWERTY 键盘的按键排列"></p>
+<p>但在日常使用中，<kbd>CapsLock</kbd> 的使用频率很低。让这么一个使用频率低的键占据一个很方便按到的位置（<strong>最靠近左手小指</strong>)，实际上是一种浪费。
+你可以想想，如果是 <kbd>Ctrl</kbd> 或者 <kbd>Esc</kbd> 放在 <kbd>CapsLock</kbd> 的位置，是不是日常使用就不需要伸手指去“够”它们？只要挪一下小指就行了。
+特别是对于 <a href="https://www.vim.org/">Vim</a>/<a href="https://neovim.io/">Neovim</a>/<a href="https://www.gnu.org/software/emacs/">Emacs</a>
+等用户来说，更是如虎添翼。</p>
+<p>而且我们还可以做到更灵活的映射，即点按（tap）<kbd>CapsLock</kbd> 时是 <kbd>Esc</kbd>，长按（hold）则是 <kbd>Ctrl</kbd>。
+这样在使用 <strong>Vim/Neovim</strong> 的时候会更方便，无论是切换 mode 还是按键序列。</p>
+<p>在 Linux 上可以用 <a href="https://github.com/alols/xcape">xcape</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，而在 macOS 上则可以使用 <a href="https://karabiner-elements.pqrs.org/">karabiner-elements</a><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> 来实现。
+在 Windows 上并没有简单易用的方案，只有基于 <a href="https://www.autohotkey.com/">AutoHotkey</a> 的方案<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>和这个软件 <a href="https://github.com/ililim/dual-key-remap">dual-key-remap</a>。
+但是我测试下来都不起作用，所以在 Windows 上一直没用上这种灵活的 <kbd>CapsLock</kbd> 映射。</p>
+<p>直到最近我发现了一个用 <a href="https://www.rust-lang.org/">Rust</a> 写的跨平台软件 <a href="https://github.com/jtroo/kanata">kanata</a>。
+接下来我就简单介绍一下如何使用 kanata 来实现 <kbd>CapsLock</kbd> 的灵活映射。</p>
+<h2 id="安装">安装</h2>
+<p>首先需要安装 <a href="https://github.com/jtroo/kanata">kanata</a>，其实也没有特别复杂的操作，参考 <a href="https://github.com/jtroo/kanata/blob/main/README.md">README</a> 就行。
+可以选择下载预编译好的<a href="https://github.com/jtroo/kanata/releases">包</a>，也可以通过包管理器进行下载。
+我在 Windows 上使用 <a href="https://scoop.sh/">Scoop</a> 来进行安装，命令如下：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">scoop</span> <span class="n">install</span> <span class="n">kanata</span></span></span></code></pre></div><p>kanata 默认不会在后台跑，而且它也没有什么托盘图标，需要在命令行里启动：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">kanata</span> <span class="p">-</span><span class="n">-cfg</span> <span class="n">kanata</span><span class="p">.</span><span class="n">kbd</span></span></span></code></pre></div><div class="alert alert-tip">
+  <p class="alert-title">
+    <span class="alert-icon alert-tip-icon">
+      <svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path>
+      </svg>
+      Tip
+    </span>
+   </p>
+   <p class="alert-text">如果需要托盘图标的话，可以使用这个库 <a href="https://github.com/rszyma/kanata-tray">kanata-tray</a>。</p>
+</div>
+
+<div class="alert alert-tip">
+  <p class="alert-title">
+    <span class="alert-icon alert-tip-icon">
+      <svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path>
+      </svg>
+      Tip
+    </span>
+   </p>
+   <p class="alert-text">也可以使用 <a href="https://github.com/jtroo/kanata/releases/tag/v1.7.0-prerelease-1">v1.7.0-prerelease-1</a> 版本。
+内置了 Windows 下的托盘图标，详见这个 <a href="https://github.com/jtroo/kanata/pull/990">PR</a>。</p>
+</div>
+
+<p>如果想让它开机自启的话，那么可以通过在 <code>%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup</code>
+目录下创建一个 Shortcut 来实现。在 Target 这一栏填入下面这一行命令：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">System32</span><span class="p">\</span><span class="n">conhost</span><span class="p">.</span><span class="py">exe</span> <span class="p">-</span><span class="n">-headless</span> <span class="p">&lt;</span><span class="nb">path-to</span><span class="n">-your-kanata</span><span class="p">.</span><span class="n">exe</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-cfg</span> <span class="p">&lt;</span><span class="nb">path-to</span><span class="n">-your-kanata</span><span class="p">.</span><span class="n">kbd</span><span class="p">&gt;</span></span></span></code></pre></div><h2 id="配置">配置</h2>
+<p>kanata 的配置使用的是 LISP 的语法来编写的，可以参考这篇 <a href="https://github.com/jtroo/kanata/blob/main/docs/config.adoc">Guide</a>
+和 <a href="https://github.com/jtroo/kanata/blob/main/cfg_samples">cfg_samples</a>。
+另外 kanata 的作者还提供了一个在线的<a href="https://jtroo.github.io/">模拟器</a>来让你测试配置。</p>
+<p>和 LISP 不同的地方是，<code>;</code> 不是单行注释符，而是按键 <kbd>;</kbd>，单行注释符是 <code>;;</code>。另外块注释则是 <code>#|</code> 和 <code>|#</code>。</p>
+<div class="alert alert-note">
+  <p class="alert-title">
+    <span class="alert-icon alert-note-icon">
+      <svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+      </svg>
+      Note
+    </span>
+  </p>
+  <p class="alert-text">kanata 配置语法来自于和它相似的项目 <a href="https://github.com/kmonad/kmonad">kmonad</a>，这是一个用 <a href="https://www.haskell.org/">Haskell</a> 写的软件。</p>
+</div>
+
+<p>简单来说，kanata 的配置需要有且仅有一个
+<a href="https://github.com/jtroo/kanata/blob/main/docs/config.adoc#defsrc"><code>defsrc</code></a>
+以及至少一个
+<a href="https://github.com/jtroo/kanata/blob/main/docs/config.adoc#deflayer"><code>deflayer</code></a>。
+前者定义了键盘物理按键的位置，后者则定义了物理按键的映射规则，叫做层（layer）。
+层可以有多个，默认会激活第一个 <code>deflayer</code> 所定义的层。</p>
+<p>如果想将一个按键映射到另一个按键，则需要使用 <code>defalias</code>。</p>
+<h3 id="defsrc">defsrc</h3>
+<p>例如一个 QWERTY 键盘 60 配列的键盘配置如下：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">;; QWERTY 键盘 60 配列</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="p">(</span><span class="nv">defsrc</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="nv">grv</span>  <span class="mi">1</span>    <span class="mi">2</span>    <span class="mi">3</span>    <span class="mi">4</span>    <span class="mi">5</span>    <span class="mi">6</span>    <span class="mi">7</span>    <span class="mi">8</span>    <span class="mi">9</span>    <span class="mi">0</span>    <span class="nf">-</span>    <span class="nf">=</span>    <span class="nv">bspc</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="nv">tab</span>  <span class="nv">q</span>    <span class="nv">w</span>    <span class="nv">e</span>    <span class="nv">r</span>    <span class="no">t</span>    <span class="nv">y</span>    <span class="nv">u</span>    <span class="nv">i</span>    <span class="nv">o</span>    <span class="nv">p</span>    <span class="nv">[</span>    <span class="nv">]</span>    <span class="err">\</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="nv">caps</span> <span class="nv">a</span>    <span class="nv">s</span>    <span class="nv">d</span>    <span class="nv">f</span>    <span class="nv">g</span>    <span class="nv">h</span>    <span class="nv">j</span>    <span class="nv">k</span>    <span class="nv">l</span>    <span class="c1">;    &#39;    ret</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="nv">lsft</span> <span class="nv">z</span>    <span class="nv">x</span>    <span class="nv">c</span>    <span class="nv">v</span>    <span class="nv">b</span>    <span class="nv">n</span>    <span class="nv">m</span>    <span class="o">,</span>    <span class="o">.</span>    <span class="nf">/</span>    <span class="nv">rsft</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">  <span class="nv">lctl</span> <span class="nv">lmet</span> <span class="nv">lalt</span>           <span class="nv">spc</span>            <span class="nv">ralt</span> <span class="nv">rmet</span> <span class="nv">rctl</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="p">)</span></span></span></code></pre></div><p>其中 <code>lmet</code> 和 <code>rmet</code> 分别是左 Meta 键和右 Meta 键，也就是 Windows 键。</p>
+<p>如果是键盘上没有的按键，在 <code>defsrc</code> 里可以省略。另外如果是键盘自带的特殊键，也可以省略。
+比如我使用的的键盘就没有 <code>rmet</code>，同时多了两个 <kbd>Fn</kbd> 和 <kbd>Pn</kbd>，我的配置如下：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">(</span><span class="nv">defsrc</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="nv">esc</span>  <span class="mi">1</span>    <span class="mi">2</span>    <span class="mi">3</span>    <span class="mi">4</span>    <span class="mi">5</span>    <span class="mi">6</span>    <span class="mi">7</span>    <span class="mi">8</span>    <span class="mi">9</span>    <span class="mi">0</span>    <span class="nf">-</span>    <span class="nf">=</span>    <span class="nv">bspc</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="nv">tab</span>  <span class="nv">q</span>    <span class="nv">w</span>    <span class="nv">e</span>    <span class="nv">r</span>    <span class="no">t</span>    <span class="nv">y</span>    <span class="nv">u</span>    <span class="nv">i</span>    <span class="nv">o</span>    <span class="nv">p</span>    <span class="nv">[</span>    <span class="nv">]</span>    <span class="err">\</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="nv">caps</span> <span class="nv">a</span>    <span class="nv">s</span>    <span class="nv">d</span>    <span class="nv">f</span>    <span class="nv">g</span>    <span class="nv">h</span>    <span class="nv">j</span>    <span class="nv">k</span>    <span class="nv">l</span>    <span class="c1">;    &#39;    ret</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="nv">lsft</span> <span class="nv">z</span>    <span class="nv">x</span>    <span class="nv">c</span>    <span class="nv">v</span>    <span class="nv">b</span>    <span class="nv">n</span>    <span class="nv">m</span>    <span class="o">,</span>    <span class="o">.</span>    <span class="nf">/</span>    <span class="nv">rsft</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="nv">lctl</span> <span class="nv">lmet</span> <span class="nv">lalt</span>           <span class="nv">spc</span>            <span class="nv">ralt</span> <span class="nv">rctl</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">)</span></span></span></code></pre></div><h3 id="deflayer">deflayer</h3>
+<p>例如在 QWERTY 键盘上定义一个 <a href="https://en.wikipedia.org/wiki/Dvorak_keyboard_layout">Dvorak</a> 布局层：</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/KB_United_States_Dvorak.svg/2880px-KB_United_States_Dvorak.svg.png" alt="Dvorak layout"></p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">;; QWERTY 键盘 60 配列</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="p">(</span><span class="nv">defsrc</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">  <span class="nv">grv</span>  <span class="mi">1</span>    <span class="mi">2</span>    <span class="mi">3</span>    <span class="mi">4</span>    <span class="mi">5</span>    <span class="mi">6</span>    <span class="mi">7</span>    <span class="mi">8</span>    <span class="mi">9</span>    <span class="mi">0</span>    <span class="nf">-</span>    <span class="nf">=</span>    <span class="nv">bspc</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">  <span class="nv">tab</span>  <span class="nv">q</span>    <span class="nv">w</span>    <span class="nv">e</span>    <span class="nv">r</span>    <span class="no">t</span>    <span class="nv">y</span>    <span class="nv">u</span>    <span class="nv">i</span>    <span class="nv">o</span>    <span class="nv">p</span>    <span class="nv">[</span>    <span class="nv">]</span>    <span class="err">\</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  <span class="nv">caps</span> <span class="nv">a</span>    <span class="nv">s</span>    <span class="nv">d</span>    <span class="nv">f</span>    <span class="nv">g</span>    <span class="nv">h</span>    <span class="nv">j</span>    <span class="nv">k</span>    <span class="nv">l</span>    <span class="c1">;    &#39;    ret</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="nv">lsft</span> <span class="nv">z</span>    <span class="nv">x</span>    <span class="nv">c</span>    <span class="nv">v</span>    <span class="nv">b</span>    <span class="nv">n</span>    <span class="nv">m</span>    <span class="o">,</span>    <span class="o">.</span>    <span class="nf">/</span>    <span class="nv">rsft</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">  <span class="nv">lctl</span> <span class="nv">lmet</span> <span class="nv">lalt</span>           <span class="nv">spc</span>            <span class="nv">ralt</span> <span class="nv">rmet</span> <span class="nv">rctl</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1">;; Dvorak 布局</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">(</span><span class="nv">deflayer</span> <span class="nv">dvorak</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">  <span class="nv">grv</span>  <span class="mi">1</span>    <span class="mi">2</span>    <span class="mi">3</span>    <span class="mi">4</span>    <span class="mi">5</span>    <span class="mi">6</span>    <span class="mi">7</span>    <span class="mi">8</span>    <span class="mi">9</span>    <span class="mi">0</span>    <span class="nv">[</span>    <span class="nv">]</span>    <span class="nv">bspc</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="nv">tab</span>  <span class="o">&#39;</span>    <span class="o">,</span>    <span class="o">.</span>    <span class="nv">p</span>    <span class="nv">y</span>    <span class="nv">f</span>    <span class="nv">g</span>    <span class="nv">c</span>    <span class="nv">r</span>    <span class="nv">l</span>    <span class="nf">/</span>    <span class="nf">=</span>    <span class="err">\</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">  <span class="nv">caps</span> <span class="nv">a</span>    <span class="nv">o</span>    <span class="nv">e</span>    <span class="nv">u</span>    <span class="nv">i</span>    <span class="nv">d</span>    <span class="nv">h</span>    <span class="no">t</span>    <span class="nv">n</span>    <span class="nv">s</span>    <span class="nf">-</span>    <span class="nv">ret</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">  <span class="nv">lsft</span> <span class="c1">;    q    j    k    x    b    m    w    v    z    rsft</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">  <span class="nv">lctl</span> <span class="nv">lmet</span> <span class="nv">lalt</span>           <span class="nv">spc</span>            <span class="nv">ralt</span> <span class="nv">rmet</span> <span class="nv">rctl</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="p">)</span></span></span></code></pre></div><h3 id="defalias--tap-hold">defalias &amp; tap-hold</h3>
+<p>想要实现按下 <kbd>CapsLock</kbd> 是 <kbd>Esc</kbd>，长按是 <kbd>Ctrl</kbd>
+则需要使用 <code>defalias</code> 和 <code>tap-hold</code> 这个动作来实现。</p>
+<p><code>defalias</code> 需要一个
+<a href="https://github.com/jtroo/kanata/blob/main/docs/config.adoc#aliases">alias</a> 和一个
+<a href="https://github.com/jtroo/kanata/blob/main/docs/config.adoc#actions">action</a>，
+然后需要在 <code>deflayer</code> 里使用 <code>@alias</code> 来将这个动作映射到某个按键上面。</p>
+<p><code>tap-hold</code> 这个动作接受以下 4 个参数：</p>
+<ol>
+<li>tap timeout (unit: ms)</li>
+<li>hold timeout (unit: ms)</li>
+<li>tap action</li>
+<li>hold action</li>
+</ol>
+<p><code>tap-hold</code> 还有两个变体动作：</p>
+<ol>
+<li><code>tap-hold-press</code> 或 <code>tap⬓↓</code></li>
+<li><code>tap-hold-release</code> 或 <code>tap⬓↑</code></li>
+</ol>
+<p>这两个变体动作用于让按键响应更加灵敏而不受 hold timeout 的限制。</p>
+<p>我们可以使用 <code>tap-hold-press</code> 来实现，代码如下：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">;; tap for escape, hold for left ctrl</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="p">(</span><span class="nv">defalias</span> <span class="nv">cap</span> <span class="p">(</span><span class="nv">tap-hold-press</span> <span class="mi">200</span> <span class="mi">200</span> <span class="nv">esc</span> <span class="nv">lctl</span><span class="p">))</span></span></span></code></pre></div><h3 id="tap-dance">tap-dance</h3>
+<p>如果真的需要用上 <kbd>CapsLock</kbd> 的话，可以使用
+<a href="https://github.com/jtroo/kanata/blob/main/docs/config.adoc#tap-dance"><code>tap-dance</code></a>
+来将之映射到另一个按键下，短按两下触发。</p>
+<p>比如映射到 <kbd>Esc</kbd> 上，代码如下：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">(</span><span class="nv">defalias</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="c1">;; 1 tap : &#34;Escape&#34;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="c1">;; 2 tap : &#34;Caps Lock&#34;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="nv">eca</span> <span class="p">(</span><span class="nv">tap-dance</span> <span class="mi">200</span> <span class="p">(</span><span class="nv">esc</span> <span class="nv">caps</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="p">)</span></span></span></code></pre></div><h2 id="kanatakbd">kanata.kbd</h2>
+<p>将以下代码保存为 <code>.kbd</code> 文件，就可以让 kanata 加载这份配置文件，实现更灵活的 <kbd>CapsLock</kbd>：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">;; QWERTY 键盘 60 配列</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="p">(</span><span class="nv">defsrc</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">  <span class="nv">grv</span>  <span class="mi">1</span>    <span class="mi">2</span>    <span class="mi">3</span>    <span class="mi">4</span>    <span class="mi">5</span>    <span class="mi">6</span>    <span class="mi">7</span>    <span class="mi">8</span>    <span class="mi">9</span>    <span class="mi">0</span>    <span class="nf">-</span>    <span class="nf">=</span>    <span class="nv">bspc</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">  <span class="nv">tab</span>  <span class="nv">q</span>    <span class="nv">w</span>    <span class="nv">e</span>    <span class="nv">r</span>    <span class="no">t</span>    <span class="nv">y</span>    <span class="nv">u</span>    <span class="nv">i</span>    <span class="nv">o</span>    <span class="nv">p</span>    <span class="nv">[</span>    <span class="nv">]</span>    <span class="err">\</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  <span class="nv">caps</span> <span class="nv">a</span>    <span class="nv">s</span>    <span class="nv">d</span>    <span class="nv">f</span>    <span class="nv">g</span>    <span class="nv">h</span>    <span class="nv">j</span>    <span class="nv">k</span>    <span class="nv">l</span>    <span class="c1">;    &#39;    ret</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="nv">lsft</span> <span class="nv">z</span>    <span class="nv">x</span>    <span class="nv">c</span>    <span class="nv">v</span>    <span class="nv">b</span>    <span class="nv">n</span>    <span class="nv">m</span>    <span class="o">,</span>    <span class="o">.</span>    <span class="nf">/</span>    <span class="nv">rsft</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">  <span class="nv">lctl</span> <span class="nv">lmet</span> <span class="nv">lalt</span>           <span class="nv">spc</span>            <span class="nv">ralt</span> <span class="nv">rmet</span> <span class="nv">rctl</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1">;; QWERTY 布局 + 灵活的 CapsLock</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">(</span><span class="nv">deflayer</span> <span class="nv">qwerty</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">  <span class="nv">grv</span>  <span class="mi">1</span>    <span class="mi">2</span>    <span class="mi">3</span>    <span class="mi">4</span>    <span class="mi">5</span>    <span class="mi">6</span>    <span class="mi">7</span>    <span class="mi">8</span>    <span class="mi">9</span>    <span class="mi">0</span>    <span class="nf">-</span>    <span class="nf">=</span>    <span class="nv">bspc</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="nv">tab</span>  <span class="nv">q</span>    <span class="nv">w</span>    <span class="nv">e</span>    <span class="nv">r</span>    <span class="no">t</span>    <span class="nv">y</span>    <span class="nv">u</span>    <span class="nv">i</span>    <span class="nv">o</span>    <span class="nv">p</span>    <span class="nv">[</span>    <span class="nv">]</span>    <span class="err">\</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">  <span class="nv">@cap</span> <span class="nv">a</span>    <span class="nv">s</span>    <span class="nv">d</span>    <span class="nv">f</span>    <span class="nv">g</span>    <span class="nv">h</span>    <span class="nv">j</span>    <span class="nv">k</span>    <span class="nv">l</span>    <span class="c1">;    &#39;    ret</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">  <span class="nv">lsft</span> <span class="nv">z</span>    <span class="nv">x</span>    <span class="nv">c</span>    <span class="nv">v</span>    <span class="nv">b</span>    <span class="nv">n</span>    <span class="nv">m</span>    <span class="o">,</span>    <span class="o">.</span>    <span class="nf">/</span>    <span class="nv">rsft</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">  <span class="nv">lctl</span> <span class="nv">lmet</span> <span class="nv">lalt</span>           <span class="nv">spc</span>            <span class="nv">ralt</span> <span class="nv">rmet</span> <span class="nv">rctl</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">
+</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="c1">;; 按一下 CapsLock 是 Esc，按住则是左 Ctrl 键</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="p">(</span><span class="nv">defalias</span> <span class="nv">cap</span> <span class="p">(</span><span class="nv">tap-hold-press</span> <span class="mi">200</span> <span class="mi">200</span> <span class="nv">esc</span> <span class="nv">lctl</span><span class="p">))</span></span></span></code></pre></div><div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://www.jianshu.com/p/6fdc0e0fb266">https://www.jianshu.com/p/6fdc0e0fb266</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://ke-complex-modifications.pqrs.org/#caps_lock_tapped_escape_held_left_control">https://ke-complex-modifications.pqrs.org/#caps_lock_tapped_escape_held_left_control</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://gist.github.com/sedm0784/4443120">https://gist.github.com/sedm0784/4443120</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>]]></content:encoded></item></channel></rss>
