@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on ୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/blog/</link><description>Recent content in Blog on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © 2024</copyright><atom:link href="https://pagliacii.github.io/silent-lake/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>将 CapsLock 映射成 Ctrl 和 Escape</title><link>https://pagliacii.github.io/silent-lake/blog/using-capslock-as-ctrl-and-escape/</link><pubDate>Sun, 18 Aug 2024 11:51:20 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/using-capslock-as-ctrl-and-escape/</guid><description>&lt;p>常见的 &lt;a href="https://en.wikipedia.org/wiki/QWERTY">QWERTY 键盘&lt;/a>会将 &lt;kbd>CapsLock&lt;/kbd> 键放在 &lt;a href="https://en.wikipedia.org/wiki/Touch_typing#Home_row">Home row&lt;/a>
 的最左侧，也是最靠近左手小指的地方，如下图所示：&lt;/p>
-&lt;p>&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/KB_United_States.svg/2880px-KB_United_States.svg.png" alt="QWERTY 键盘的按键排列">&lt;/p>
+&lt;p>&lt;img src="https://github.com/user-attachments/assets/03b498d2-6700-4d6a-9268-1502faedb131" alt="QWERTY 键盘的按键排列">&lt;/p>
 &lt;p>但在日常使用中，&lt;kbd>CapsLock&lt;/kbd> 的使用频率很低。让这么一个使用频率低的键占据一个很方便按到的位置（&lt;strong>最靠近左手小指&lt;/strong>)，实际上是一种浪费。
 你可以想想，如果是 &lt;kbd>Ctrl&lt;/kbd> 或者 &lt;kbd>Esc&lt;/kbd> 放在 &lt;kbd>CapsLock&lt;/kbd> 的位置，是不是日常使用就不需要伸手指去“够”它们？只要挪一下小指就行了。
 特别是对于 &lt;a href="https://www.vim.org/">Vim&lt;/a>/&lt;a href="https://neovim.io/">Neovim&lt;/a>/&lt;a href="https://www.gnu.org/software/emacs/">Emacs&lt;/a>
@@ -8,7 +8,7 @@
 &lt;p>而且我们还可以做到更灵活的映射，即点按（tap）&lt;kbd>CapsLock&lt;/kbd> 时是 &lt;kbd>Esc&lt;/kbd>，长按（hold）则是 &lt;kbd>Ctrl&lt;/kbd>。
 这样在使用 &lt;strong>Vim/Neovim&lt;/strong> 的时候会更方便，无论是切换 mode 还是按键序列。&lt;/p></description><content:encoded><![CDATA[<p>常见的 <a href="https://en.wikipedia.org/wiki/QWERTY">QWERTY 键盘</a>会将 <kbd>CapsLock</kbd> 键放在 <a href="https://en.wikipedia.org/wiki/Touch_typing#Home_row">Home row</a>
 的最左侧，也是最靠近左手小指的地方，如下图所示：</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/KB_United_States.svg/2880px-KB_United_States.svg.png" alt="QWERTY 键盘的按键排列"></p>
+<p><img src="https://github.com/user-attachments/assets/03b498d2-6700-4d6a-9268-1502faedb131" alt="QWERTY 键盘的按键排列"></p>
 <p>但在日常使用中，<kbd>CapsLock</kbd> 的使用频率很低。让这么一个使用频率低的键占据一个很方便按到的位置（<strong>最靠近左手小指</strong>)，实际上是一种浪费。
 你可以想想，如果是 <kbd>Ctrl</kbd> 或者 <kbd>Esc</kbd> 放在 <kbd>CapsLock</kbd> 的位置，是不是日常使用就不需要伸手指去“够”它们？只要挪一下小指就行了。
 特别是对于 <a href="https://www.vim.org/">Vim</a>/<a href="https://neovim.io/">Neovim</a>/<a href="https://www.gnu.org/software/emacs/">Emacs</a>
@@ -121,7 +121,7 @@
 </span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="nv">lctl</span> <span class="nv">lmet</span> <span class="nv">lalt</span>           <span class="nv">spc</span>            <span class="nv">ralt</span> <span class="nv">rctl</span>
 </span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">)</span></span></span></code></pre></div><h3 id="deflayer">deflayer</h3>
 <p>例如在 QWERTY 键盘上定义一个 <a href="https://en.wikipedia.org/wiki/Dvorak_keyboard_layout">Dvorak</a> 布局层：</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/KB_United_States_Dvorak.svg/2880px-KB_United_States_Dvorak.svg.png" alt="Dvorak layout"></p>
+<p><img src="https://github.com/user-attachments/assets/ff8f84be-5e92-4884-95a2-e3b780736a9e" alt="Dvorak layout"></p>
 
 
 
