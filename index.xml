@@ -1,4 +1,317 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/</link><description>Recent content on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © 2024</copyright><atom:link href="https://pagliacii.github.io/silent-lake/index.xml" rel="self" type="application/rss+xml"/><item><title>将 CapsLock 映射成 Ctrl 和 Escape</title><link>https://pagliacii.github.io/silent-lake/blog/using-capslock-as-ctrl-and-escape/</link><pubDate>Sun, 18 Aug 2024 11:51:20 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/using-capslock-as-ctrl-and-escape/</guid><description>&lt;p>常见的 &lt;a href="https://en.wikipedia.org/wiki/QWERTY">QWERTY 键盘&lt;/a>会将 &lt;kbd>CapsLock&lt;/kbd> 键放在 &lt;a href="https://en.wikipedia.org/wiki/Touch_typing#Home_row">Home row&lt;/a>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/</link><description>Recent content on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © 2024</copyright><atom:link href="https://pagliacii.github.io/silent-lake/index.xml" rel="self" type="application/rss+xml"/><item><title>Home Row Mods</title><link>https://pagliacii.github.io/silent-lake/blog/home-row-mods/</link><pubDate>Tue, 08 Oct 2024 23:23:04 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/home-row-mods/</guid><description>什么是 home row？ Home row 是键盘上中间的那一排按键。以常见的 QWERTY 键盘为例，home row 就是 ASDFGHJKL; 这一排按键。在 F 和 J 键上还有定位用的横杠，方便盲打时手指快速移动到相应的位置。
+什么是 mods？ Mods 全称是 Modifiers，指的是键盘上的修饰键，如 ⌃ Ctrl、⎇ Alt、⇧ Shift、⊞ Win、⌘ Command 等。
+什么是 home row mods？ 通常来说，Mods 按键都位于键盘的左下角和右下角，处在 home row 上的手不得不移动到边上才能够到这些按键。而 home row mods 则是借助于 QMK 的 Mod-tap 功能，来让 home row 按键作为两个按键来使用，点按（tap）时则是键帽上印着的按键，按住（hold）时则是映射过去的 Mods 按键。
+常见的 home row mods 映射 这里以 QWERTY 键盘为例，介绍一些常见的 home row mods 映射。
+首先约定一些符号：
+Full Modifier Name Abbreviation Symbol Shift S ⇧ Control C ⎈ Alt/Option A ⎇ GUI/Win/Command G ◆ No modifier/mod-tap _ _ 接下来就是常见的映射：</description><content:encoded><![CDATA[<h2 id="什么是-home-row">什么是 home row？</h2>
+<p><a href="https://en.wikipedia.org/wiki/Touch_typing#Home_row">Home row</a> 是键盘上中间的那一排按键。以常见的 <a href="https://en.wikipedia.org/wiki/QWERTY">QWERTY</a> 键盘为例，home row 就是 <kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><kbd>F</kbd><kbd>G</kbd><kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd><kbd>;</kbd> 这一排按键。在 <kbd>F</kbd> 和 <kbd>J</kbd> 键上还有定位用的横杠，方便盲打时手指快速移动到相应的位置。</p>
+<h2 id="什么是-mods">什么是 mods？</h2>
+<p>Mods 全称是 <a href="https://en.wikipedia.org/wiki/Modifier_key">Modifiers</a>，指的是键盘上的修饰键，如 <kbd>⌃ Ctrl</kbd>、<kbd>⎇ Alt</kbd>、<kbd>⇧ Shift</kbd>、<kbd>⊞ Win</kbd>、<kbd>⌘ Command</kbd> 等。</p>
+<h2 id="什么是-home-row-mods">什么是 home row mods？</h2>
+<p>通常来说，Mods 按键都位于键盘的左下角和右下角，处在 home row 上的手不得不移动到边上才能够到这些按键。而 home row mods 则是借助于 <a href="https://qmk.fm/">QMK</a> 的 <a href="https://docs.qmk.fm/mod_tap">Mod-tap</a> 功能，来让 home row 按键作为<a href="https://en.wikipedia.org/wiki/Modifier_key#Dual-role_keys">两个按键</a>来使用，点按（<strong>tap</strong>）时则是键帽上印着的按键，按住（<strong>hold</strong>）时则是映射过去的 Mods 按键。</p>
+<h2 id="常见的-home-row-mods-映射">常见的 home row mods 映射</h2>
+<p>这里以 QWERTY 键盘为例，介绍一些常见的 home row mods 映射。</p>
+<p>首先约定一些符号：</p>
+<table>
+<thead>
+<tr>
+<th>Full Modifier Name</th>
+<th>Abbreviation</th>
+<th>Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/Shift_key">Shift</a></td>
+<td>S</td>
+<td>⇧</td>
+</tr>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/Control_key">Control</a></td>
+<td>C</td>
+<td>⎈</td>
+</tr>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/Alt_key">Alt</a>/<a href="https://en.wikipedia.org/wiki/Option_key">Option</a></td>
+<td>A</td>
+<td>⎇</td>
+</tr>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/Super_key_(keyboard_button)">GUI</a>/<a href="https://en.wikipedia.org/wiki/Windows_key">Win</a>/<a href="https://en.wikipedia.org/wiki/Command_key">Command</a></td>
+<td>G</td>
+<td>◆</td>
+</tr>
+<tr>
+<td>No modifier/mod-tap</td>
+<td>_</td>
+<td>_</td>
+</tr>
+</tbody>
+</table>
+<p>接下来就是常见的映射：</p>
+<ul>
+<li><strong>SCGA</strong>: <kbd>⇧</kbd><kbd>⎈</kbd><kbd>◆</kbd><kbd>⎇</kbd><kbd>_</kbd><kbd>_</kbd><kbd>⎇</kbd><kbd>◆</kbd><kbd>⎈</kbd><kbd>⇧</kbd></li>
+<li><strong>GASC</strong>: <kbd>◆</kbd><kbd>⎇</kbd><kbd>⇧</kbd><kbd>⎈</kbd><kbd>_</kbd><kbd>_</kbd><kbd>⎈</kbd><kbd>⇧</kbd><kbd>⎇</kbd><kbd>◆</kbd></li>
+<li><strong>GACS</strong>: <kbd>◆</kbd><kbd>⎇</kbd><kbd>⎈</kbd><kbd>⇧</kbd><kbd>_</kbd><kbd>_</kbd><kbd>⇧</kbd><kbd>⎈</kbd><kbd>⎇</kbd><kbd>◆</kbd></li>
+<li><strong>CAGS</strong>: <kbd>⎈</kbd><kbd>⎇</kbd><kbd>◆</kbd><kbd>⇧</kbd><kbd>_</kbd><kbd>_</kbd><kbd>⇧</kbd><kbd>⎇</kbd><kbd>⎈</kbd><kbd>◆</kbd></li>
+</ul>
+<p>以 <strong>GASC</strong> 为例，这是在 QWETRY home row 上的映射关系：</p>
+<table>
+<thead>
+<tr>
+<th>Home row</th>
+<th><kbd>A</kbd></th>
+<th><kbd>S</kbd></th>
+<th><kbd>D</kbd></th>
+<th><kbd>F</kbd></th>
+<th><kbd>G</kbd></th>
+<th><kbd>H</kbd></th>
+<th><kbd>J</kbd></th>
+<th><kbd>K</kbd></th>
+<th><kbd>L</kbd></th>
+<th><kbd>;</kbd></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tap</td>
+<td><kbd>A</kbd></td>
+<td><kbd>S</kbd></td>
+<td><kbd>D</kbd></td>
+<td><kbd>F</kbd></td>
+<td><kbd>G</kbd></td>
+<td><kbd>H</kbd></td>
+<td><kbd>J</kbd></td>
+<td><kbd>K</kbd></td>
+<td><kbd>L</kbd></td>
+<td><kbd>;</kbd></td>
+</tr>
+<tr>
+<td>Hold</td>
+<td><kbd>◆</kbd></td>
+<td><kbd>⎇</kbd></td>
+<td><kbd>⇧</kbd></td>
+<td><kbd>⎈</kbd></td>
+<td><kbd>_</kbd></td>
+<td><kbd>_</kbd></td>
+<td><kbd>⎈</kbd></td>
+<td><kbd>⇧</kbd></td>
+<td><kbd>⎇</kbd></td>
+<td><kbd>◆</kbd></td>
+</tr>
+</tbody>
+</table>
+<h3 id="上述映射的优缺点">上述映射的优缺点</h3>
+<ul>
+<li><strong>SCGA</strong>: 这是直接将 Mods 按键在键盘上的顺序，映射到 home row 的结果。忽略了 Mods 按键的使用频率，比如将 <kbd>⎇</kbd> 和 <kbd>◆</kbd> 放在了最方便按到的食指和中指的位置，但是很明显这比 <kbd>⇧</kbd> 和 <kbd>⎈</kbd> 使用频率要低得多。</li>
+<li><strong>GASC</strong>: 这种布局将 <kbd>⎈</kbd> 和 <kbd>⇧</kbd> 放在了食指和中指的位置，将使用频率更高的按键放在更灵活的手指上，更加合理和舒适。而且将 <kbd>⇧</kbd> 放在中指上，食指就可以很方便地去按其他按键从而输入大写字母。缺点就是 <kbd>◆</kbd> 在尾指位置上，在 macOS 上就没那么方便按。</li>
+<li><strong>GACS</strong>: 这种布局则是将使用频率最高的修饰键放在最灵活的手指下，使用频率最低的放在最弱的手指处。同时它避免了 <strong>GASC</strong> 布局无法单手 <kbd>Ctrl</kbd>+<kbd>Letter</kbd> 的尴尬局面，比如 <kbd>Ctrl</kbd>+<kbd>C</kbd>。</li>
+<li><strong>CAGS</strong>: 这种布局则是在 macOS 上更加合理和方便。</li>
+</ul>
+<p>另外这些 home row key 就不能长按了，因为长按时会被 Mods 按键覆盖掉。这在玩游戏时会造成不便，所以建议定义一个 game mode layer 来禁用 home row mods。</p>
+<h2 id="组合修饰键">组合修饰键</h2>
+<p>还有一种用法就是在 lower row 上，即 home row 下一排的按键，将一些常用组合修饰键映射上去。比如 <kbd>Ctrl</kbd>+<kbd>Shift</kbd> 映射到 <kbd>C</kbd> 上。</p>
+<p>这里举一个例子：</p>
+<table>
+<thead>
+<tr>
+<th>Lower row</th>
+<th style="text-align:center"><kbd>Z</kbd></th>
+<th style="text-align:center"><kbd>X</kbd></th>
+<th style="text-align:center"><kbd>C</kbd></th>
+<th style="text-align:center"><kbd>V</kbd></th>
+<th style="text-align:center"><kbd>B</kbd></th>
+<th style="text-align:center"><kbd>N</kbd></th>
+<th style="text-align:center"><kbd>M</kbd></th>
+<th style="text-align:center"><kbd>,</kbd></th>
+<th style="text-align:center"><kbd>.</kbd></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tap</td>
+<td style="text-align:center"><kbd>Z</kbd></td>
+<td style="text-align:center"><kbd>X</kbd></td>
+<td style="text-align:center"><kbd>C</kbd></td>
+<td style="text-align:center"><kbd>V</kbd></td>
+<td style="text-align:center"><kbd>B</kbd></td>
+<td style="text-align:center"><kbd>N</kbd></td>
+<td style="text-align:center"><kbd>M</kbd></td>
+<td style="text-align:center"><kbd>,</kbd></td>
+<td style="text-align:center"><kbd>.</kbd></td>
+</tr>
+<tr>
+<td>Hold</td>
+<td style="text-align:center"><kbd>◆</kbd>+<kbd>⎇</kbd></td>
+<td style="text-align:center"><kbd>⎇</kbd>+<kbd>⎈</kbd></td>
+<td style="text-align:center"><kbd>⎈</kbd>+<kbd>⇧</kbd></td>
+<td style="text-align:center"><kbd>V</kbd></td>
+<td style="text-align:center"><kbd>B</kbd></td>
+<td style="text-align:center"><kbd>N</kbd></td>
+<td style="text-align:center"><kbd>⇧</kbd>+<kbd>⎈</kbd></td>
+<td style="text-align:center"><kbd>⎈</kbd>+<kbd>⎇</kbd></td>
+<td style="text-align:center"><kbd>⎇</kbd>+<kbd>◆</kbd></td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-note">
+  <p class="alert-title">
+    <span class="alert-icon alert-note-icon">
+      <svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+      </svg>
+      Note
+    </span>
+  </p>
+  <p class="alert-text">如果想了解更多，可以阅读 <a href="https://precondition.github.io/home-row-mods">A guide to home row mods</a>，里面有更多详细说明和 <a href="https://precondition.github.io/home-row-mods#tips-and-tricks">tips</a>。不过涉及了很多 QMK 相关的内容，如果不打算使用 QMK 的话，这部分可以略过。</p>
+</div>
+
+<h2 id="kanata-实现">Kanata 实现</h2>
+<p>我选择了 <a href="https://github.com/jtroo/kanata">kanata</a> 而不是 <a href="https://precondition.github.io/home-row-mods">A guide to home row mods</a> 里<a href="https://precondition.github.io/home-row-mods#using-home-row-mods-with-kmonad">提及</a>的 <a href="https://github.com/kmonad/kmonad">KMonad</a> 作为实现 home row mods 的工具。不过 kanata 是受 KMonad 启发而用 <a href="https://www.rust-lang.org/">Rust</a> 写的，功能上差不多。</p>
+<p>Kanata 仓库里就有两份 home row mods 的示例配置，分别是 <a href="https://github.com/jtroo/kanata/blob/main/cfg_samples/home-row-mod-basic.kbd">home-row-mod-basic.kbd</a> 和 <a href="https://github.com/jtroo/kanata/blob/main/cfg_samples/home-row-mod-advanced.kbd">home-row-mod-advanced.kbd</a>。</p>
+<p>我之前也写过一篇使用 kanata 将 <kbd>CapsLock</kbd> 映射成 <kbd>Ctrl</kbd> 和 <kbd>Esc</kbd> 的<a href="https://pagliacii.github.io/silent-lake/blog/using-capslock-as-ctrl-and-escape/">文章</a>，可以作为 kanata 的简单介绍。</p>
+<p>也可以使用 <a href="https://jtroo.github.io/">kanata online simulator</a> 来测试配置是否正确。</p>
+<p>下面是我目前使用的 kanata 配置：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="p">(</span><span class="nv">defsrc</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">  <span class="nv">esc</span>  <span class="mi">1</span>    <span class="mi">2</span>    <span class="mi">3</span>    <span class="mi">4</span>    <span class="mi">5</span>    <span class="mi">6</span>    <span class="mi">7</span>    <span class="mi">8</span>    <span class="mi">9</span>    <span class="mi">0</span>    <span class="nf">-</span>    <span class="nf">=</span>    <span class="nv">bspc</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">  <span class="nv">tab</span>  <span class="nv">q</span>    <span class="nv">w</span>    <span class="nv">e</span>    <span class="nv">r</span>    <span class="no">t</span>    <span class="nv">y</span>    <span class="nv">u</span>    <span class="nv">i</span>    <span class="nv">o</span>    <span class="nv">p</span>    <span class="nv">[</span>    <span class="nv">]</span>    <span class="err">\</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">  <span class="nv">caps</span> <span class="nv">a</span>    <span class="nv">s</span>    <span class="nv">d</span>    <span class="nv">f</span>    <span class="nv">g</span>    <span class="nv">h</span>    <span class="nv">j</span>    <span class="nv">k</span>    <span class="nv">l</span>    <span class="c1">;    &#39;    ret</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  <span class="nv">lsft</span> <span class="nv">z</span>    <span class="nv">x</span>    <span class="nv">c</span>    <span class="nv">v</span>    <span class="nv">b</span>    <span class="nv">n</span>    <span class="nv">m</span>    <span class="o">,</span>    <span class="o">.</span>    <span class="nf">/</span>    <span class="nv">rsft</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="nv">lctl</span> <span class="nv">lmet</span> <span class="nv">lalt</span>           <span class="nv">spc</span>            <span class="nv">ralt</span> <span class="nv">rctl</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="p">(</span><span class="nv">deflayer</span> <span class="nv">qwerty</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">  <span class="nv">@eca</span> <span class="mi">1</span>    <span class="mi">2</span>    <span class="mi">3</span>    <span class="mi">4</span>    <span class="mi">5</span>    <span class="mi">6</span>    <span class="mi">7</span>    <span class="mi">8</span>    <span class="mi">9</span>    <span class="mi">0</span>    <span class="nf">-</span>    <span class="nf">=</span>    <span class="nv">bspc</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">  <span class="nv">tab</span>  <span class="nv">@q</span><span class="o">`</span>  <span class="nv">w</span>    <span class="nv">e</span>    <span class="nv">r</span>    <span class="no">t</span>    <span class="nv">y</span>    <span class="nv">u</span>    <span class="nv">i</span>    <span class="nv">o</span>    <span class="nv">p</span>    <span class="nv">[</span>    <span class="nv">]</span>    <span class="err">\</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">  <span class="nv">@cap</span> <span class="nv">a</span>    <span class="nv">s</span>    <span class="nv">d</span>    <span class="nv">f</span>    <span class="nv">g</span>    <span class="nv">h</span>    <span class="nv">j</span>    <span class="nv">k</span>    <span class="nv">l</span>    <span class="c1">;    &#39;    ret</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="nv">lsft</span> <span class="nv">z</span>    <span class="nv">x</span>    <span class="nv">c</span>    <span class="nv">v</span>    <span class="nv">b</span>    <span class="nv">n</span>    <span class="nv">m</span>    <span class="o">,</span>    <span class="o">.</span>    <span class="nf">/</span>    <span class="nv">rsft</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">  <span class="nv">@cap</span> <span class="nv">lmet</span> <span class="nv">lalt</span>           <span class="nv">spc</span>            <span class="nv">ralt</span> <span class="nv">rctl</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="p">(</span><span class="nv">defalias</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">  <span class="nv">cap</span> <span class="p">(</span><span class="nv">tap-hold-press</span> <span class="mi">200</span> <span class="mi">200</span> <span class="nv">esc</span> <span class="nv">lctl</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">  <span class="c1">;; 1 tap : &#34;Escape&#34;</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">  <span class="c1">;; 2 tap : &#34;Caps Lock&#34;</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">  <span class="nv">eca</span> <span class="p">(</span><span class="nv">tap-dance</span> <span class="mi">200</span> <span class="p">(</span><span class="nv">esc</span> <span class="nv">caps</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">  <span class="c1">;; 1 tap : &#34;q&#34;</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">  <span class="c1">;; 2 tap : &#34;`&#34;</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">  <span class="nv">q</span><span class="o">`</span> <span class="p">(</span><span class="nv">tap-dance</span> <span class="mi">200</span> <span class="p">(</span><span class="nv">q</span> <span class="nv">grave</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="p">)</span></span></span></code></pre></div><p>我打算采用 <strong>GASC</strong> 布局。至于无法单手 <kbd>Ctrl</kbd>+<kbd>Letter</kbd> 的问题，我可以通过 <kbd>CapsLock</kbd>+<kdb>Letter</kdb> 来代替，因为我的 <kbd>CapsLock</kbd> 已经是 dual-role key 了。</p>
+<h3 id="defalias">defalias</h3>
+<p>首先需要定义一些 <code>tap-hold</code> 别名来描述 Dual role keys，这里可以参考 kanata 示例配置里的 <a href="https://github.com/jtroo/kanata/blob/main/cfg_samples/home-row-mod-advanced.kbd">home-row-mod-advanced.kbd</a>：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="p">(</span><span class="nv">defalias</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">  <span class="c1">;; home row mods -- GASC</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">  <span class="nv">met_a</span> <span class="p">(</span><span class="nv">tap-hold-release-keys</span> <span class="nv">$tt</span> <span class="nv">$ht</span> <span class="p">(</span><span class="nv">multi</span> <span class="nv">a</span> <span class="nv">@tap</span><span class="p">)</span> <span class="nv">lmet</span> <span class="nv">$left-hand-keys</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">  <span class="nv">alt_s</span> <span class="p">(</span><span class="nv">tap-hold-release-keys</span> <span class="nv">$tt</span> <span class="nv">$ht</span> <span class="p">(</span><span class="nv">multi</span> <span class="nv">s</span> <span class="nv">@tap</span><span class="p">)</span> <span class="nv">lalt</span> <span class="nv">$left-hand-keys</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  <span class="nv">sft_d</span> <span class="p">(</span><span class="nv">tap-hold-release-keys</span> <span class="nv">$tt</span> <span class="nv">$ht</span> <span class="p">(</span><span class="nv">multi</span> <span class="nv">d</span> <span class="nv">@tap</span><span class="p">)</span> <span class="nv">lsft</span> <span class="nv">$left-hand-keys</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="nv">ctl_f</span> <span class="p">(</span><span class="nv">tap-hold-release-keys</span> <span class="nv">$tt</span> <span class="nv">$ht</span> <span class="p">(</span><span class="nv">multi</span> <span class="nv">f</span> <span class="nv">@tap</span><span class="p">)</span> <span class="nv">lctl</span> <span class="nv">$left-hand-keys</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="nv">ctl_j</span> <span class="p">(</span><span class="nv">tap-hold-release-keys</span> <span class="nv">$tt</span> <span class="nv">$ht</span> <span class="p">(</span><span class="nv">multi</span> <span class="nv">j</span> <span class="nv">@tap</span><span class="p">)</span> <span class="nv">rctl</span> <span class="nv">$right-hand-keys</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">  <span class="nv">sft_k</span> <span class="p">(</span><span class="nv">tap-hold-release-keys</span> <span class="nv">$tt</span> <span class="nv">$ht</span> <span class="p">(</span><span class="nv">multi</span> <span class="nv">k</span> <span class="nv">@tap</span><span class="p">)</span> <span class="nv">rsft</span> <span class="nv">$right-hand-keys</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">  <span class="nv">alt_l</span> <span class="p">(</span><span class="nv">tap-hold-release-keys</span> <span class="nv">$tt</span> <span class="nv">$ht</span> <span class="p">(</span><span class="nv">multi</span> <span class="nv">l</span> <span class="nv">@tap</span><span class="p">)</span> <span class="nv">lalt</span> <span class="nv">$right-hand-keys</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">  <span class="nv">met_</span><span class="c1">; (tap-hold-release-keys $tt $ht (multi ; @tap) rmet $right-hand-keys)</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="p">)</span></span></span></code></pre></div><p>在上面的 alias 里用到的 action 是 <a href="https://github.com/jtroo/kanata/blob/main/docs/config.adoc#tap-hold"><code>tap-hold-release-keys</code></a>，它的作用是当第 5 个参数中的按键在当前动作发生时被按下，提前触发一次点按，减少同手滚动输入的误差。</p>
+<p>比如你想连按 <kbd>k</kbd> 和 <kbd>l</kbd> 来输入 <code>kl</code>，使用 <code>tap-hold-release-keys</code> 就可以减少输入成 <kbd>Shift</kbd><kbd>l</kbd> 的可能性。</p>
+<p>然后再定义一些变量：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="p">(</span><span class="nb">defvar</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">  <span class="nv">tap-timeout</span>   <span class="mi">50</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">  <span class="nv">hold-timeout</span>  <span class="mi">200</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">  <span class="nv">tt</span> <span class="nv">$tap-timeout</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  <span class="nv">ht</span> <span class="nv">$hold-timeout</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">  <span class="nv">left-hand-keys</span> <span class="p">(</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="nv">q</span> <span class="nv">w</span> <span class="nv">e</span> <span class="nv">r</span> <span class="no">t</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="nv">a</span> <span class="nv">s</span> <span class="nv">d</span> <span class="nv">f</span> <span class="nv">g</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="nv">z</span> <span class="nv">x</span> <span class="nv">c</span> <span class="nv">v</span> <span class="nv">b</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">  <span class="nv">right-hand-keys</span> <span class="p">(</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="nv">y</span> <span class="nv">u</span> <span class="nv">i</span> <span class="nv">o</span> <span class="nv">p</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="nv">h</span> <span class="nv">j</span> <span class="nv">k</span> <span class="nv">l</span> <span class="c1">;</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">    <span class="nv">n</span> <span class="nv">m</span> <span class="o">,</span> <span class="o">.</span> <span class="nf">/</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="p">)</span></span></span></code></pre></div><p>其中 <code>left-hand-keys</code> 和 <code>right-hand-keys</code> 变量分别是左手和右手的按键，用作 <code>tap-hold-release-keys</code> 的第 5 个参数。</p>
+<p>至于 <code>tap-timeout</code> 和 <code>hold-timeout</code> 则可以根据自己的按键习惯来进行设置。</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">(</span><span class="nv">defalias</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="nv">tap</span> <span class="p">(</span><span class="nv">multi</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="nv">@nomods</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="p">(</span><span class="nv">on-idle-fakekey</span> <span class="nv">to-base</span> <span class="nv">tap</span> <span class="mi">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="p">)</span></span></span></code></pre></div><p><code>tap</code> 则是一个虚拟按键，用于在 home row 按键点按触发时临时切换至 base layer，以防止误触。具体定义如下：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">(</span><span class="nv">deffakekeys</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="nv">to-base</span> <span class="p">(</span><span class="nv">layer-switch</span> <span class="nv">qwerty</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="p">)</span></span></span></code></pre></div><h3 id="deflayer">deflayer</h3>
+<p>接着定义 <code>qwerty</code> 层：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">(</span><span class="nv">deflayer</span> <span class="nv">qwerty</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="nv">esc</span>   <span class="mi">1</span>      <span class="mi">2</span>      <span class="mi">3</span>      <span class="mi">4</span>      <span class="mi">5</span>      <span class="mi">6</span>      <span class="mi">7</span>      <span class="mi">8</span>      <span class="mi">9</span>      <span class="mi">0</span>      <span class="nf">-</span>      <span class="nf">=</span>      <span class="nv">bspc</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="nv">tab</span>   <span class="nv">q</span>      <span class="nv">w</span>      <span class="nv">e</span>      <span class="nv">r</span>      <span class="no">t</span>      <span class="nv">y</span>      <span class="nv">u</span>      <span class="nv">i</span>      <span class="nv">o</span>      <span class="nv">p</span>      <span class="nv">[</span>      <span class="nv">]</span>      <span class="nv">@bsl</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="nv">@cap</span>  <span class="nv">@met_a</span> <span class="nv">@alt_s</span> <span class="nv">@sft_d</span> <span class="nv">@ctl_f</span> <span class="nv">g</span>      <span class="nv">h</span>      <span class="nv">@ctl_j</span> <span class="nv">@sft_k</span> <span class="nv">@alt_l</span> <span class="nv">@met_</span><span class="c1">; &#39;      ret</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="nv">lsft</span>  <span class="nv">z</span>      <span class="nv">x</span>      <span class="nv">c</span>      <span class="nv">v</span>      <span class="nv">b</span>      <span class="nv">n</span>      <span class="nv">m</span>      <span class="o">,</span>      <span class="o">.</span>      <span class="nf">/</span>      <span class="nv">rsft</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="nv">lctl</span>  <span class="nv">lmet</span>   <span class="nv">lalt</span>                 <span class="nv">spc</span>                  <span class="nv">ralt</span>   <span class="nv">rctl</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">)</span></span></span></code></pre></div><p>以及 <code>nomods-layer</code>：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">(</span><span class="nv">deflayer</span> <span class="nv">nomods-layer</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="nv">esc</span>  <span class="mi">1</span>    <span class="mi">2</span>    <span class="mi">3</span>    <span class="mi">4</span>    <span class="mi">5</span>    <span class="mi">6</span>    <span class="mi">7</span>    <span class="mi">8</span>    <span class="mi">9</span>    <span class="mi">0</span>    <span class="nf">-</span>    <span class="nf">=</span>    <span class="nv">bspc</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="nv">tab</span>  <span class="nv">q</span>    <span class="nv">w</span>    <span class="nv">e</span>    <span class="nv">r</span>    <span class="no">t</span>    <span class="nv">y</span>    <span class="nv">u</span>    <span class="nv">i</span>    <span class="nv">o</span>    <span class="nv">p</span>    <span class="nv">[</span>    <span class="nv">]</span>    <span class="nv">@bsl</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="nv">@cap</span> <span class="nv">a</span>    <span class="nv">s</span>    <span class="nv">d</span>    <span class="nv">f</span>    <span class="nv">g</span>    <span class="nv">h</span>    <span class="nv">j</span>    <span class="nv">k</span>    <span class="nv">l</span>    <span class="c1">;    &#39;    ret</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="nv">lsft</span> <span class="nv">z</span>    <span class="nv">x</span>    <span class="nv">c</span>    <span class="nv">v</span>    <span class="nv">b</span>    <span class="nv">n</span>    <span class="nv">m</span>    <span class="o">,</span>    <span class="o">.</span>    <span class="nf">/</span>    <span class="nv">rsft</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="nv">lctl</span> <span class="nv">lmet</span> <span class="nv">lalt</span>           <span class="nv">spc</span>            <span class="nv">ralt</span> <span class="nv">rctl</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">)</span></span></span></code></pre></div><p>我还定义了一个 <code>layers</code> 层，用于切换到其他层，并把它映射到 <kbd>\</kbd> 上：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="p">(</span><span class="nv">deflayermap</span> <span class="p">(</span><span class="nv">layers</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">  <span class="mi">1</span>    <span class="nv">@base</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">  <span class="mi">2</span>    <span class="nv">@nomods</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">  <span class="mi">3</span>    <span class="nv">lrld</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="p">(</span><span class="nv">defalias</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="c1">;; toggle layer aliases</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">  <span class="nv">bsl</span> <span class="p">(</span><span class="nv">tap-hold-release</span> <span class="nv">$tt</span> <span class="nv">$ht</span> <span class="nv">\ @lay</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">  <span class="nv">lay</span> <span class="p">(</span><span class="nv">layer-toggle</span> <span class="nv">layers</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">  <span class="c1">;; change the base layer between base and nomods-layer</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">  <span class="nv">base</span> <span class="p">(</span><span class="nv">layer-switch</span> <span class="nv">qwerty</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="nv">nomods</span> <span class="p">(</span><span class="nv">layer-switch</span> <span class="nv">nomods-layer</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="p">)</span></span></span></code></pre></div><p>通过按住 <kbd>\</kbd> 键，可以切换到 <code>layers</code> 层，然后用 <kbd>1</kbd>、<kbd>2</kbd>、<kbd>3</kbd> 键切换到不同的层。</p>
+<h3 id="完整配置">完整配置</h3>
+<p>至此，我的配置就完成了。完整的配置可以看<a href="https://github.com/Pagliacii/dotfiles/blob/main/kanata/.config/kanata/kanata.kbd">这里</a>。</p>
+]]></content:encoded></item><item><title>将 CapsLock 映射成 Ctrl 和 Escape</title><link>https://pagliacii.github.io/silent-lake/blog/using-capslock-as-ctrl-and-escape/</link><pubDate>Sun, 18 Aug 2024 11:51:20 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/using-capslock-as-ctrl-and-escape/</guid><description>&lt;p>常见的 &lt;a href="https://en.wikipedia.org/wiki/QWERTY">QWERTY 键盘&lt;/a>会将 &lt;kbd>CapsLock&lt;/kbd> 键放在 &lt;a href="https://en.wikipedia.org/wiki/Touch_typing#Home_row">Home row&lt;/a>
 的最左侧，也是最靠近左手小指的地方，如下图所示：&lt;/p>
 &lt;p>&lt;img src="https://github.com/user-attachments/assets/03b498d2-6700-4d6a-9268-1502faedb131" alt="QWERTY 键盘的按键排列">&lt;/p>
 &lt;p>但在日常使用中，&lt;kbd>CapsLock&lt;/kbd> 的使用频率很低。让这么一个使用频率低的键占据一个很方便按到的位置（&lt;strong>最靠近左手小指&lt;/strong>)，实际上是一种浪费。
