@@ -216,8 +216,8 @@ Kanata 仓库里就有两份 home row mods 的示例配置，分别是 [home-row
 
 (defalias
   ;; toggle layer aliases
-  bsl (tap-hold-release $tt $ht \ @lay)
   lay (layer-toggle layers)
+  bsl (tap-hold-release $tt $ht \ @lay)
   ;; change the base layer between base and nomods-layer
   base (layer-switch qwerty)
   nomods (layer-switch nomods-layer)
