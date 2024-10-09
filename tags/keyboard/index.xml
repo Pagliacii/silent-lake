@@ -303,8 +303,8 @@ Full Modifier Name Abbreviation Symbol Shift S ⇧ Control C ⎈ Alt/Option A �
 </span></span><span class="line"><span class="ln"> 6</span><span class="cl">
 </span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="p">(</span><span class="nv">defalias</span>
 </span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="c1">;; toggle layer aliases</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">  <span class="nv">bsl</span> <span class="p">(</span><span class="nv">tap-hold-release</span> <span class="nv">$tt</span> <span class="nv">$ht</span> <span class="nv">\ @lay</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">  <span class="nv">lay</span> <span class="p">(</span><span class="nv">layer-toggle</span> <span class="nv">layers</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">  <span class="nv">lay</span> <span class="p">(</span><span class="nv">layer-toggle</span> <span class="nv">layers</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">  <span class="nv">bsl</span> <span class="p">(</span><span class="nv">tap-hold-release</span> <span class="nv">$tt</span> <span class="nv">$ht</span> <span class="nv">\ @lay</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">11</span><span class="cl">  <span class="c1">;; change the base layer between base and nomods-layer</span>
 </span></span><span class="line"><span class="ln">12</span><span class="cl">  <span class="nv">base</span> <span class="p">(</span><span class="nv">layer-switch</span> <span class="nv">qwerty</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="nv">nomods</span> <span class="p">(</span><span class="nv">layer-switch</span> <span class="nv">nomods-layer</span><span class="p">)</span>
