@@ -67,7 +67,7 @@ categoryID = "DIC_kwDOKgeurc4CaZsJ"
 mapping = "og:title"
 reactionsEnabled = true
 emitMetadata = true
-theme = "dark_tritanopia"
+theme = "https://giscus.catppuccin.com/themes/latte.css"
 
 [params.social]
 twitter = "PagliaciiH"
