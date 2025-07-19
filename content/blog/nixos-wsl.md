@@ -24,3 +24,8 @@ TBD
 ## 问题记录
 
 - 安装 NixOS-WSL 后无法使用，WSL1 -> WSL2
+
+## 学习 Nix
+
+- [Zero to Nix](https://zero-to-nix.com/)
+- [NixOS 中文](https://nixos-cn.org/)
