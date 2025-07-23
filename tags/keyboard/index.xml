@@ -1,9 +1,49 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>keyboard on ୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/tags/keyboard/</link><description>Recent content in keyboard on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © since 2023</copyright><lastBuildDate>Tue, 08 Oct 2024 23:23:04 +0800</lastBuildDate><atom:link href="https://pagliacii.github.io/silent-lake/tags/keyboard/index.xml" rel="self" type="application/rss+xml"/><item><title>Home Row Mods</title><link>https://pagliacii.github.io/silent-lake/blog/home-row-mods/</link><pubDate>Tue, 08 Oct 2024 23:23:04 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/home-row-mods/</guid><description>什么是 home row？ Home row 是键盘上中间的那一排按键。以常见的 QWERTY 键盘为例，home row 就是 ASDFGHJKL; 这一排按键。在 F 和 J 键上还有定位用的横杠，方便盲打时手指快速移动到相应的位置。
-什么是 mods？ Mods 全称是 Modifiers，指的是键盘上的修饰键，如 ⌃ Ctrl、⎇ Alt、⇧ Shift、⊞ Win、⌘ Command 等。
-什么是 home row mods？ 通常来说，Mods 按键都位于键盘的左下角和右下角，处在 home row 上的手不得不移动到边上才能够到这些按键。而 home row mods 则是借助于 QMK 的 Mod-tap 功能，来让 home row 按键作为两个按键来使用，点按（tap）时则是键帽上印着的按键，按住（hold）时则是映射过去的 Mods 按键。
-常见的 home row mods 映射 这里以 QWERTY 键盘为例，介绍一些常见的 home row mods 映射。
-首先约定一些符号：
-Full Modifier Name Abbreviation Symbol Shift S ⇧ Control C ⎈ Alt/Option A ⎇ GUI/Win/Command G ◆ No modifier/mod-tap _ _ 接下来就是常见的映射：</description><content:encoded><![CDATA[<h2 id="什么是-home-row">什么是 home row？</h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Keyboard on ୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/tags/keyboard/</link><description>Recent content in Keyboard on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © 2025</copyright><lastBuildDate>Tue, 08 Oct 2024 23:23:04 +0800</lastBuildDate><atom:link href="https://pagliacii.github.io/silent-lake/tags/keyboard/index.xml" rel="self" type="application/rss+xml"/><item><title>Home Row Mods</title><link>https://pagliacii.github.io/silent-lake/blog/home-row-mods/</link><pubDate>Tue, 08 Oct 2024 23:23:04 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/home-row-mods/</guid><description>&lt;h2 id="什么是-home-row">什么是 home row？&lt;/h2>
+&lt;p>&lt;a href="https://en.wikipedia.org/wiki/Touch_typing#Home_row">Home row&lt;/a> 是键盘上中间的那一排按键。以常见的 &lt;a href="https://en.wikipedia.org/wiki/QWERTY">QWERTY&lt;/a> 键盘为例，home row 就是 &lt;kbd>A&lt;/kbd>&lt;kbd>S&lt;/kbd>&lt;kbd>D&lt;/kbd>&lt;kbd>F&lt;/kbd>&lt;kbd>G&lt;/kbd>&lt;kbd>H&lt;/kbd>&lt;kbd>J&lt;/kbd>&lt;kbd>K&lt;/kbd>&lt;kbd>L&lt;/kbd>&lt;kbd>;&lt;/kbd> 这一排按键。在 &lt;kbd>F&lt;/kbd> 和 &lt;kbd>J&lt;/kbd> 键上还有定位用的横杠，方便盲打时手指快速移动到相应的位置。&lt;/p>
+&lt;h2 id="什么是-mods">什么是 mods？&lt;/h2>
+&lt;p>Mods 全称是 &lt;a href="https://en.wikipedia.org/wiki/Modifier_key">Modifiers&lt;/a>，指的是键盘上的修饰键，如 &lt;kbd>⌃ Ctrl&lt;/kbd>、&lt;kbd>⎇ Alt&lt;/kbd>、&lt;kbd>⇧ Shift&lt;/kbd>、&lt;kbd>⊞ Win&lt;/kbd>、&lt;kbd>⌘ Command&lt;/kbd> 等。&lt;/p>
+&lt;h2 id="什么是-home-row-mods">什么是 home row mods？&lt;/h2>
+&lt;p>通常来说，Mods 按键都位于键盘的左下角和右下角，处在 home row 上的手不得不移动到边上才能够到这些按键。而 home row mods 则是借助于 &lt;a href="https://qmk.fm/">QMK&lt;/a> 的 &lt;a href="https://docs.qmk.fm/mod_tap">Mod-tap&lt;/a> 功能，来让 home row 按键作为&lt;a href="https://en.wikipedia.org/wiki/Modifier_key#Dual-role_keys">两个按键&lt;/a>来使用，点按（&lt;strong>tap&lt;/strong>）时则是键帽上印着的按键，按住（&lt;strong>hold&lt;/strong>）时则是映射过去的 Mods 按键。&lt;/p>
+&lt;h2 id="常见的-home-row-mods-映射">常见的 home row mods 映射&lt;/h2>
+&lt;p>这里以 QWERTY 键盘为例，介绍一些常见的 home row mods 映射。&lt;/p>
+&lt;p>首先约定一些符号：&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Full Modifier Name&lt;/th>
+ &lt;th>Abbreviation&lt;/th>
+ &lt;th>Symbol&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;a href="https://en.wikipedia.org/wiki/Shift_key">Shift&lt;/a>&lt;/td>
+ &lt;td>S&lt;/td>
+ &lt;td>⇧&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://en.wikipedia.org/wiki/Control_key">Control&lt;/a>&lt;/td>
+ &lt;td>C&lt;/td>
+ &lt;td>⎈&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://en.wikipedia.org/wiki/Alt_key">Alt&lt;/a>/&lt;a href="https://en.wikipedia.org/wiki/Option_key">Option&lt;/a>&lt;/td>
+ &lt;td>A&lt;/td>
+ &lt;td>⎇&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://en.wikipedia.org/wiki/Super_key_%28keyboard_button%29">GUI&lt;/a>/&lt;a href="https://en.wikipedia.org/wiki/Windows_key">Win&lt;/a>/&lt;a href="https://en.wikipedia.org/wiki/Command_key">Command&lt;/a>&lt;/td>
+ &lt;td>G&lt;/td>
+ &lt;td>◆&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>No modifier/mod-tap&lt;/td>
+ &lt;td>_&lt;/td>
+ &lt;td>_&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>接下来就是常见的映射：&lt;/p></description><content:encoded><![CDATA[<h2 id="什么是-home-row">什么是 home row？</h2>
 <p><a href="https://en.wikipedia.org/wiki/Touch_typing#Home_row">Home row</a> 是键盘上中间的那一排按键。以常见的 <a href="https://en.wikipedia.org/wiki/QWERTY">QWERTY</a> 键盘为例，home row 就是 <kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><kbd>F</kbd><kbd>G</kbd><kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd><kbd>;</kbd> 这一排按键。在 <kbd>F</kbd> 和 <kbd>J</kbd> 键上还有定位用的横杠，方便盲打时手指快速移动到相应的位置。</p>
 <h2 id="什么是-mods">什么是 mods？</h2>
 <p>Mods 全称是 <a href="https://en.wikipedia.org/wiki/Modifier_key">Modifiers</a>，指的是键盘上的修饰键，如 <kbd>⌃ Ctrl</kbd>、<kbd>⎇ Alt</kbd>、<kbd>⇧ Shift</kbd>、<kbd>⊞ Win</kbd>、<kbd>⌘ Command</kbd> 等。</p>
@@ -13,40 +53,40 @@ Full Modifier Name Abbreviation Symbol Shift S ⇧ Control C ⎈ Alt/Option A �
 <p>这里以 QWERTY 键盘为例，介绍一些常见的 home row mods 映射。</p>
 <p>首先约定一些符号：</p>
 <table>
-<thead>
-<tr>
-<th>Full Modifier Name</th>
-<th>Abbreviation</th>
-<th>Symbol</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://en.wikipedia.org/wiki/Shift_key">Shift</a></td>
-<td>S</td>
-<td>⇧</td>
-</tr>
-<tr>
-<td><a href="https://en.wikipedia.org/wiki/Control_key">Control</a></td>
-<td>C</td>
-<td>⎈</td>
-</tr>
-<tr>
-<td><a href="https://en.wikipedia.org/wiki/Alt_key">Alt</a>/<a href="https://en.wikipedia.org/wiki/Option_key">Option</a></td>
-<td>A</td>
-<td>⎇</td>
-</tr>
-<tr>
-<td><a href="https://en.wikipedia.org/wiki/Super_key_(keyboard_button)">GUI</a>/<a href="https://en.wikipedia.org/wiki/Windows_key">Win</a>/<a href="https://en.wikipedia.org/wiki/Command_key">Command</a></td>
-<td>G</td>
-<td>◆</td>
-</tr>
-<tr>
-<td>No modifier/mod-tap</td>
-<td>_</td>
-<td>_</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Full Modifier Name</th>
+          <th>Abbreviation</th>
+          <th>Symbol</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="https://en.wikipedia.org/wiki/Shift_key">Shift</a></td>
+          <td>S</td>
+          <td>⇧</td>
+      </tr>
+      <tr>
+          <td><a href="https://en.wikipedia.org/wiki/Control_key">Control</a></td>
+          <td>C</td>
+          <td>⎈</td>
+      </tr>
+      <tr>
+          <td><a href="https://en.wikipedia.org/wiki/Alt_key">Alt</a>/<a href="https://en.wikipedia.org/wiki/Option_key">Option</a></td>
+          <td>A</td>
+          <td>⎇</td>
+      </tr>
+      <tr>
+          <td><a href="https://en.wikipedia.org/wiki/Super_key_%28keyboard_button%29">GUI</a>/<a href="https://en.wikipedia.org/wiki/Windows_key">Win</a>/<a href="https://en.wikipedia.org/wiki/Command_key">Command</a></td>
+          <td>G</td>
+          <td>◆</td>
+      </tr>
+      <tr>
+          <td>No modifier/mod-tap</td>
+          <td>_</td>
+          <td>_</td>
+      </tr>
+  </tbody>
 </table>
 <p>接下来就是常见的映射：</p>
 <ul>
@@ -57,49 +97,49 @@ Full Modifier Name Abbreviation Symbol Shift S ⇧ Control C ⎈ Alt/Option A �
 </ul>
 <p>以 <strong>GASC</strong> 为例，这是在 QWETRY home row 上的映射关系：</p>
 <table>
-<thead>
-<tr>
-<th>Home row</th>
-<th><kbd>A</kbd></th>
-<th><kbd>S</kbd></th>
-<th><kbd>D</kbd></th>
-<th><kbd>F</kbd></th>
-<th><kbd>G</kbd></th>
-<th><kbd>H</kbd></th>
-<th><kbd>J</kbd></th>
-<th><kbd>K</kbd></th>
-<th><kbd>L</kbd></th>
-<th><kbd>;</kbd></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Tap</td>
-<td><kbd>A</kbd></td>
-<td><kbd>S</kbd></td>
-<td><kbd>D</kbd></td>
-<td><kbd>F</kbd></td>
-<td><kbd>G</kbd></td>
-<td><kbd>H</kbd></td>
-<td><kbd>J</kbd></td>
-<td><kbd>K</kbd></td>
-<td><kbd>L</kbd></td>
-<td><kbd>;</kbd></td>
-</tr>
-<tr>
-<td>Hold</td>
-<td><kbd>◆</kbd></td>
-<td><kbd>⎇</kbd></td>
-<td><kbd>⇧</kbd></td>
-<td><kbd>⎈</kbd></td>
-<td><kbd>_</kbd></td>
-<td><kbd>_</kbd></td>
-<td><kbd>⎈</kbd></td>
-<td><kbd>⇧</kbd></td>
-<td><kbd>⎇</kbd></td>
-<td><kbd>◆</kbd></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Home row</th>
+          <th><kbd>A</kbd></th>
+          <th><kbd>S</kbd></th>
+          <th><kbd>D</kbd></th>
+          <th><kbd>F</kbd></th>
+          <th><kbd>G</kbd></th>
+          <th><kbd>H</kbd></th>
+          <th><kbd>J</kbd></th>
+          <th><kbd>K</kbd></th>
+          <th><kbd>L</kbd></th>
+          <th><kbd>;</kbd></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Tap</td>
+          <td><kbd>A</kbd></td>
+          <td><kbd>S</kbd></td>
+          <td><kbd>D</kbd></td>
+          <td><kbd>F</kbd></td>
+          <td><kbd>G</kbd></td>
+          <td><kbd>H</kbd></td>
+          <td><kbd>J</kbd></td>
+          <td><kbd>K</kbd></td>
+          <td><kbd>L</kbd></td>
+          <td><kbd>;</kbd></td>
+      </tr>
+      <tr>
+          <td>Hold</td>
+          <td><kbd>◆</kbd></td>
+          <td><kbd>⎇</kbd></td>
+          <td><kbd>⇧</kbd></td>
+          <td><kbd>⎈</kbd></td>
+          <td><kbd>_</kbd></td>
+          <td><kbd>_</kbd></td>
+          <td><kbd>⎈</kbd></td>
+          <td><kbd>⇧</kbd></td>
+          <td><kbd>⎇</kbd></td>
+          <td><kbd>◆</kbd></td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="上述映射的优缺点">上述映射的优缺点</h3>
 <ul>
@@ -113,46 +153,46 @@ Full Modifier Name Abbreviation Symbol Shift S ⇧ Control C ⎈ Alt/Option A �
 <p>还有一种用法就是在 lower row 上，即 home row 下一排的按键，将一些常用组合修饰键映射上去。比如 <kbd>Ctrl</kbd>+<kbd>Shift</kbd> 映射到 <kbd>C</kbd> 上。</p>
 <p>这里举一个例子：</p>
 <table>
-<thead>
-<tr>
-<th>Lower row</th>
-<th style="text-align:center"><kbd>Z</kbd></th>
-<th style="text-align:center"><kbd>X</kbd></th>
-<th style="text-align:center"><kbd>C</kbd></th>
-<th style="text-align:center"><kbd>V</kbd></th>
-<th style="text-align:center"><kbd>B</kbd></th>
-<th style="text-align:center"><kbd>N</kbd></th>
-<th style="text-align:center"><kbd>M</kbd></th>
-<th style="text-align:center"><kbd>,</kbd></th>
-<th style="text-align:center"><kbd>.</kbd></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Tap</td>
-<td style="text-align:center"><kbd>Z</kbd></td>
-<td style="text-align:center"><kbd>X</kbd></td>
-<td style="text-align:center"><kbd>C</kbd></td>
-<td style="text-align:center"><kbd>V</kbd></td>
-<td style="text-align:center"><kbd>B</kbd></td>
-<td style="text-align:center"><kbd>N</kbd></td>
-<td style="text-align:center"><kbd>M</kbd></td>
-<td style="text-align:center"><kbd>,</kbd></td>
-<td style="text-align:center"><kbd>.</kbd></td>
-</tr>
-<tr>
-<td>Hold</td>
-<td style="text-align:center"><kbd>◆</kbd>+<kbd>⎇</kbd></td>
-<td style="text-align:center"><kbd>⎇</kbd>+<kbd>⎈</kbd></td>
-<td style="text-align:center"><kbd>⎈</kbd>+<kbd>⇧</kbd></td>
-<td style="text-align:center"><kbd>V</kbd></td>
-<td style="text-align:center"><kbd>B</kbd></td>
-<td style="text-align:center"><kbd>N</kbd></td>
-<td style="text-align:center"><kbd>⇧</kbd>+<kbd>⎈</kbd></td>
-<td style="text-align:center"><kbd>⎈</kbd>+<kbd>⎇</kbd></td>
-<td style="text-align:center"><kbd>⎇</kbd>+<kbd>◆</kbd></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Lower row</th>
+          <th style="text-align: center"><kbd>Z</kbd></th>
+          <th style="text-align: center"><kbd>X</kbd></th>
+          <th style="text-align: center"><kbd>C</kbd></th>
+          <th style="text-align: center"><kbd>V</kbd></th>
+          <th style="text-align: center"><kbd>B</kbd></th>
+          <th style="text-align: center"><kbd>N</kbd></th>
+          <th style="text-align: center"><kbd>M</kbd></th>
+          <th style="text-align: center"><kbd>,</kbd></th>
+          <th style="text-align: center"><kbd>.</kbd></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Tap</td>
+          <td style="text-align: center"><kbd>Z</kbd></td>
+          <td style="text-align: center"><kbd>X</kbd></td>
+          <td style="text-align: center"><kbd>C</kbd></td>
+          <td style="text-align: center"><kbd>V</kbd></td>
+          <td style="text-align: center"><kbd>B</kbd></td>
+          <td style="text-align: center"><kbd>N</kbd></td>
+          <td style="text-align: center"><kbd>M</kbd></td>
+          <td style="text-align: center"><kbd>,</kbd></td>
+          <td style="text-align: center"><kbd>.</kbd></td>
+      </tr>
+      <tr>
+          <td>Hold</td>
+          <td style="text-align: center"><kbd>◆</kbd>+<kbd>⎇</kbd></td>
+          <td style="text-align: center"><kbd>⎇</kbd>+<kbd>⎈</kbd></td>
+          <td style="text-align: center"><kbd>⎈</kbd>+<kbd>⇧</kbd></td>
+          <td style="text-align: center"><kbd>V</kbd></td>
+          <td style="text-align: center"><kbd>B</kbd></td>
+          <td style="text-align: center"><kbd>N</kbd></td>
+          <td style="text-align: center"><kbd>⇧</kbd>+<kbd>⎈</kbd></td>
+          <td style="text-align: center"><kbd>⎈</kbd>+<kbd>⎇</kbd></td>
+          <td style="text-align: center"><kbd>⎇</kbd>+<kbd>◆</kbd></td>
+      </tr>
+  </tbody>
 </table>
 <div class="alert alert-note">
   <p class="alert-title">

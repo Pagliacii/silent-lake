@@ -1,12 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>raspberrypi on ୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/tags/raspberrypi/</link><description>Recent content in raspberrypi on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © since 2023</copyright><lastBuildDate>Sun, 31 Mar 2024 23:39:25 +0800</lastBuildDate><atom:link href="https://pagliacii.github.io/silent-lake/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml"/><item><title>重置树莓派用户密码</title><link>https://pagliacii.github.io/silent-lake/blog/recover-passwd-raspberry-pi/</link><pubDate>Sun, 31 Mar 2024 23:39:25 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/recover-passwd-raspberry-pi/</guid><description>如果你也有在树莓派上跑服务的话，那么难免会碰到忘记用户密码的情况。这里记录一下如何在不重新安装系统的情况下重置密码。
-准备 首先你需要满足以下条件：
-可以接触到树莓派 一个显示器和一个键盘 一台电脑和一个读卡器 修改 cmdline.txt 文件 在断掉树莓派电源的情况下，把 SD 卡拔出来并通过读卡器连接到电脑上，在文件浏览器中找到它里面的 cmdline.txt 文件，然后用编辑器打开它。
-cmdline.txt 的内容是类似于下面这样的一行文本：
-dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait只需要在上面那行文本的最后加上 init=/bin/sh 来让树莓派系统启动后自动进入 /bin/sh，然后就可以把卡插回树莓派重新启动。
-修改密码 给树莓派接上显示器和键盘后，输入以下命令来重新挂载系统的根目录：
-$ mount -o remount, rw /接着就可以通过这条命令修改指定用户的密码了，我用的是 DietPi 镜像，所以这里以 dietpi 用户为例：
-$ passwd dietpi回车后输入两次密码，就可以输入下面两条命令来正常启动系统：
-$ sync $ exec /sbin/init恢复 cmdline.txt 文件 最后还需要再次拔出 SD 卡，把 cmdline.txt 文件里的 init=/bin/sh 移除后重启，就可以通过新密码正常登录了。</description><content:encoded><![CDATA[<p>如果你也有在<a href="https://www.raspberrypi.com/">树莓派</a>上跑服务的话，那么难免会碰到忘记用户密码的情况。这里记录一下如何在不重新安装系统的情况下重置密码。</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Raspberrypi on ୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/tags/raspberrypi/</link><description>Recent content in Raspberrypi on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © 2025</copyright><lastBuildDate>Sun, 31 Mar 2024 23:39:25 +0800</lastBuildDate><atom:link href="https://pagliacii.github.io/silent-lake/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml"/><item><title>重置树莓派用户密码</title><link>https://pagliacii.github.io/silent-lake/blog/recover-passwd-raspberry-pi/</link><pubDate>Sun, 31 Mar 2024 23:39:25 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/recover-passwd-raspberry-pi/</guid><description>&lt;p>如果你也有在&lt;a href="https://www.raspberrypi.com/">树莓派&lt;/a>上跑服务的话，那么难免会碰到忘记用户密码的情况。这里记录一下如何在不重新安装系统的情况下重置密码。&lt;/p>
+&lt;h2 id="准备">准备&lt;/h2>
+&lt;p>首先你需要满足以下条件：&lt;/p>
+&lt;ol>
+&lt;li>可以接触到树莓派&lt;/li>
+&lt;li>一个显示器和一个键盘&lt;/li>
+&lt;li>一台电脑和一个读卡器&lt;/li>
+&lt;/ol>
+&lt;h2 id="修改-cmdlinetxt-文件">修改 &lt;code>cmdline.txt&lt;/code> 文件&lt;/h2>
+&lt;p>在断掉树莓派电源的情况下，把 SD 卡拔出来并通过读卡器连接到电脑上，在文件浏览器中找到它里面的 &lt;code>cmdline.txt&lt;/code> 文件，然后用编辑器打开它。&lt;/p>
+&lt;p>&lt;code>cmdline.txt&lt;/code> 的内容是类似于下面这样的一行文本：&lt;/p>
+
+
+
+
+
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>只需要在上面那行文本的最后加上 &lt;code>init=/bin/sh&lt;/code> 来让树莓派系统启动后自动进入 &lt;code>/bin/sh&lt;/code>，然后就可以把卡插回树莓派重新启动。&lt;/p>
+&lt;h2 id="修改密码">修改密码&lt;/h2>
+&lt;p>给树莓派接上显示器和键盘后，输入以下命令来重新挂载系统的根目录：&lt;/p>
+
+
+
+
+
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">$ mount -o remount, rw /&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>接着就可以通过这条命令修改指定用户的密码了，我用的是 &lt;a href="https://dietpi.com/">DietPi&lt;/a> 镜像，所以这里以 &lt;strong>dietpi&lt;/strong> 用户为例：&lt;/p>
+
+
+
+
+
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">$ passwd dietpi&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>回车后输入两次密码，就可以输入下面两条命令来正常启动系统：&lt;/p>
+
+
+
+
+
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">$ sync
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ &lt;span class="nb">exec&lt;/span> /sbin/init&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="恢复-cmdlinetxt-文件">恢复 &lt;code>cmdline.txt&lt;/code> 文件&lt;/h2>
+&lt;p>最后还需要再次拔出 SD 卡，把 &lt;code>cmdline.txt&lt;/code> 文件里的 &lt;code>init=/bin/sh&lt;/code> 移除后重启，就可以通过新密码正常登录了。&lt;/p></description><content:encoded><![CDATA[<p>如果你也有在<a href="https://www.raspberrypi.com/">树莓派</a>上跑服务的话，那么难免会碰到忘记用户密码的情况。这里记录一下如何在不重新安装系统的情况下重置密码。</p>
 <h2 id="准备">准备</h2>
 <p>首先你需要满足以下条件：</p>
 <ol>

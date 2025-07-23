@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>python on ୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/tags/python/</link><description>Recent content in python on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © since 2023</copyright><lastBuildDate>Thu, 07 Dec 2023 22:38:40 +0800</lastBuildDate><atom:link href="https://pagliacii.github.io/silent-lake/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python 之“无法访问”的属性</title><link>https://pagliacii.github.io/silent-lake/blog/debugging-cases-python-inaccessible-attribute/</link><pubDate>Thu, 07 Dec 2023 22:38:40 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/debugging-cases-python-inaccessible-attribute/</guid><description>&lt;p>最近碰到一个 Python 中的奇怪现象：明明在类定义里有着一个属性，但是在实例化后的对象上却无法访问到它，会抛出 &lt;code>AttributeError&lt;/code>。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Python on ୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/tags/python/</link><description>Recent content in Python on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © 2025</copyright><lastBuildDate>Thu, 07 Dec 2023 22:38:40 +0800</lastBuildDate><atom:link href="https://pagliacii.github.io/silent-lake/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python 之“无法访问”的属性</title><link>https://pagliacii.github.io/silent-lake/blog/debugging-cases-python-inaccessible-attribute/</link><pubDate>Thu, 07 Dec 2023 22:38:40 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/debugging-cases-python-inaccessible-attribute/</guid><description>&lt;p>最近碰到一个 Python 中的奇怪现象：明明在类定义里有着一个属性，但是在实例化后的对象上却无法访问到它，会抛出 &lt;code>AttributeError&lt;/code>。&lt;/p>
 &lt;p>虽然 root cause 很简单，但是我觉得这个案例可以作为 debug 的例子，于是就有了这篇文章。&lt;/p></description><content:encoded><![CDATA[<p>最近碰到一个 Python 中的奇怪现象：明明在类定义里有着一个属性，但是在实例化后的对象上却无法访问到它，会抛出 <code>AttributeError</code>。</p>
 <p>虽然 root cause 很简单，但是我觉得这个案例可以作为 debug 的例子，于是就有了这篇文章。</p>
 <h2 id="示例代码">示例代码</h2>
@@ -41,8 +41,7 @@
 <p>要分析这个问题，首先我们需要对 Python 中属性查找的过程有一定了解。在 Python 中，当我们使用形如 <code>instance.attribute</code> 来访问实例属性时，会先在该实例对象上查找相应的属性，如果找不到就会抛出 <code>AttributeError</code>。而当我们给类加上了 <code>__getattr__</code> 方法时，Python 就会在找不到属性时调用这个<a href="https://docs.python.org/3/reference/datamodel.html#object.__getattr__">方法</a>。</p>
 <blockquote>
 <p><strong>object.__getattr__(self, name)</strong></p>
-<p>Called when the default attribute access fails with an <a href="https://docs.python.org/3/library/exceptions.html#AttributeError"><code>AttributeError</code></a> (either <a href="https://docs.python.org/3/reference/datamodel.html#object.__getattribute__"><code>__getattribute__()</code></a> raises an <a href="https://docs.python.org/3/library/exceptions.html#AttributeError"><code>AttributeError</code></a> because name is not an instance attribute or an attribute in the class tree for <code>self</code>; or <a href="https://docs.python.org/3/reference/datamodel.html#object.__get__"><code>__get__()</code></a> of a name property raises <a href="https://docs.python.org/3/library/exceptions.html#AttributeError"><code>AttributeError</code></a>). This method should either return the (computed) attribute value or raise an <a href="https://docs.python.org/3/library/exceptions.html#AttributeError"><code>AttributeError</code></a> exception.</p>
-</blockquote>
+<p>Called when the default attribute access fails with an <a href="https://docs.python.org/3/library/exceptions.html#AttributeError"><code>AttributeError</code></a> (either <a href="https://docs.python.org/3/reference/datamodel.html#object.__getattribute__"><code>__getattribute__()</code></a> raises an <a href="https://docs.python.org/3/library/exceptions.html#AttributeError"><code>AttributeError</code></a> because name is not an instance attribute or an attribute in the class tree for <code>self</code>; or <a href="https://docs.python.org/3/reference/datamodel.html#object.__get__"><code>__get__()</code></a> of a name property raises <a href="https://docs.python.org/3/library/exceptions.html#AttributeError"><code>AttributeError</code></a>). This method should either return the (computed) attribute value or raise an <a href="https://docs.python.org/3/library/exceptions.html#AttributeError"><code>AttributeError</code></a> exception.</p></blockquote>
 <p>当我们执行示例代码中的 <code>print(child.name)</code> 这一行时，会有以下 traceback 信息抛出：</p>
 
 
@@ -181,8 +180,7 @@
 <p>在 Python <a href="https://docs.python.org/3/reference/datamodel.html">Data Model</a> 文档里还有这样一个 <a href="https://docs.python.org/3/reference/datamodel.html#object.__getattribute__">magic method</a>: <code>__getattribute__</code>。它会在属性访问时无条件调用。</p>
 <blockquote>
 <p><strong>object.__getattribute__(self, name)</strong></p>
-<p>Called unconditionally to implement attribute accesses for instances of the class.</p>
-</blockquote>
+<p>Called unconditionally to implement attribute accesses for instances of the class.</p></blockquote>
 <p>我们知道在 Python 里并没有事实上的私有变量，只有约定上的私有属性。其实借助 <code>__getattribute__</code> 方法，我们就可以把约定上的私有属性变为“事实上”的私有属性。</p>
 <details>
     <summary style="color: var(--flexoki-light-blue)">Bonus</summary>
@@ -220,13 +218,11 @@
 </details>]]></content:encoded></item><item><title>Python 列表推导式里变量未定义的问题</title><link>https://pagliacii.github.io/silent-lake/blog/a-python-list-comprehensions-scope-problem/</link><pubDate>Sun, 15 Oct 2023 23:29:26 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/a-python-list-comprehensions-scope-problem/</guid><description>&lt;p>之前在&lt;a href="https://pythonhunter.org/">捕蛇者说&lt;/a>的听众群里有人问了下面这个问题：&lt;/p>
 &lt;blockquote>
 &lt;p>为什么 &lt;code>eval('''exec(&amp;quot;d={};[d for i in range(1)]&amp;quot;)''',{},{})&lt;/code> 会报错 NameError
-而 &lt;code>eval('''exec(&amp;quot;d={};[d for i in range(1)]&amp;quot;,None,{})''')&lt;/code> 和 &lt;code>eval('''exec(&amp;quot;d={};[d]&amp;quot;,None,{})''')&lt;/code> 都不会报错？&lt;/p>
-&lt;/blockquote>
+而 &lt;code>eval('''exec(&amp;quot;d={};[d for i in range(1)]&amp;quot;,None,{})''')&lt;/code> 和 &lt;code>eval('''exec(&amp;quot;d={};[d]&amp;quot;,None,{})''')&lt;/code> 都不会报错？&lt;/p>&lt;/blockquote>
 &lt;p>挺有趣的，为什么在有 &lt;code>d={}&lt;/code> 的情况下还会出现 &lt;code>NameError&lt;/code> 呢？下面就来分析看看。&lt;/p></description><content:encoded><![CDATA[<p>之前在<a href="https://pythonhunter.org/">捕蛇者说</a>的听众群里有人问了下面这个问题：</p>
 <blockquote>
 <p>为什么 <code>eval('''exec(&quot;d={};[d for i in range(1)]&quot;)''',{},{})</code> 会报错 NameError
-而 <code>eval('''exec(&quot;d={};[d for i in range(1)]&quot;,None,{})''')</code> 和 <code>eval('''exec(&quot;d={};[d]&quot;,None,{})''')</code> 都不会报错？</p>
-</blockquote>
+而 <code>eval('''exec(&quot;d={};[d for i in range(1)]&quot;,None,{})''')</code> 和 <code>eval('''exec(&quot;d={};[d]&quot;,None,{})''')</code> 都不会报错？</p></blockquote>
 <p>挺有趣的，为什么在有 <code>d={}</code> 的情况下还会出现 <code>NameError</code> 呢？下面就来分析看看。</p>
 <div class="alert alert-note">
   <p class="alert-title">
@@ -345,8 +341,7 @@
 </span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]}</span></span></span></code></pre></div><h2 id="等价情况">等价情况</h2>
 <p>在 <a href="https://docs.python.org/3.11/library/functions.html#exec">Python 文档</a>里关于 <code>exec</code> 函数的说明里有这么一句话：</p>
 <blockquote>
-<p>If exec gets two separate objects as globals and locals, the code will be executed as if it were embedded in a class definition.</p>
-</blockquote>
+<p>If exec gets two separate objects as globals and locals, the code will be executed as if it were embedded in a class definition.</p></blockquote>
 <p>那么上述代码就可以等价于以下代码：</p>
 
 
@@ -395,7 +390,7 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p><a href="https://en.wikipedia.org/wiki/Scope_(computer_science)">https://en.wikipedia.org/wiki/Scope_(computer_science)</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Scope_%28computer_science%29">https://en.wikipedia.org/wiki/Scope_(computer_science)</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>]]></content:encoded></item></channel></rss>

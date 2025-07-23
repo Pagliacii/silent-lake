@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>WSL on ୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/tags/wsl/</link><description>Recent content in WSL on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © 2025</copyright><lastBuildDate>Wed, 16 Jul 2025 23:58:24 +0800</lastBuildDate><atom:link href="https://pagliacii.github.io/silent-lake/tags/wsl/index.xml" rel="self" type="application/rss+xml"/><item><title>安装使用 NixOS-WSL</title><link>https://pagliacii.github.io/silent-lake/blog/nixos-wsl/</link><pubDate>Wed, 16 Jul 2025 23:58:24 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/nixos-wsl/</guid><description>&lt;p>最近在折腾 &lt;a href="https://nixos.org/">Nix&lt;/a>，打算在我的日常 Windows 机器上安装 NixOS，所以尝试了 &lt;a href="https://github.com/nix-community/nixos-wsl">NixOS-WSL&lt;/a>。在安装过程中碰到了一些问题，于是就有了这篇记录。&lt;/p>
+&lt;h2 id="启用-wsl2">启用 WSL2&lt;/h2>
+&lt;p>对于新系统来说，可以在有&lt;strong>管理员权限&lt;/strong>的 PowerShell 或 CMD 中运行以下命令来启用 WSL2：&lt;/p>
+
+
+
+
+
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="n">wsl&lt;/span> &lt;span class="p">-&lt;/span>&lt;span class="n">-install&lt;/span> &lt;span class="p">-&lt;/span>&lt;span class="n">-no-distribution&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="手动安装">手动安装&lt;/h3>
+&lt;p>对于较早的系统来说，则需要分别启用以下可选功能：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://learn.microsoft.com/en-us/windows/wsl/about">适用于 Linux 的 Windows 子系统&lt;/a>&lt;/li>
+&lt;/ul>
+
+
+
+
+
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="n">dism&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="py">exe&lt;/span> &lt;span class="p">/&lt;/span>&lt;span class="n">online&lt;/span> &lt;span class="p">/&lt;/span>&lt;span class="nb">enable-feature&lt;/span> &lt;span class="p">/&lt;/span>&lt;span class="n">featurename&lt;/span>&lt;span class="err">:&lt;/span>&lt;span class="nb">Microsoft-Windows&lt;/span>&lt;span class="n">-Subsystem-Linux&lt;/span> &lt;span class="p">/&lt;/span>&lt;span class="n">all&lt;/span> &lt;span class="p">/&lt;/span>&lt;span class="n">norestart&lt;/span>&lt;span class="p">`&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;a href="https://learn.microsoft.com/en-us/windows/wsl/troubleshooting#error-0x80370102-the-virtual-machine-could-not-be-started-because-a-required-feature-is-not-installed">虚拟机平台&lt;/a>&lt;/li>
+&lt;/ul>
+
+
+
+
+
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="n">dism&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="py">exe&lt;/span> &lt;span class="p">/&lt;/span>&lt;span class="n">online&lt;/span> &lt;span class="p">/&lt;/span>&lt;span class="nb">enable-feature&lt;/span> &lt;span class="p">/&lt;/span>&lt;span class="n">featurename&lt;/span>&lt;span class="err">:&lt;/span>&lt;span class="n">VirtualMachinePlatform&lt;/span> &lt;span class="p">/&lt;/span>&lt;span class="n">all&lt;/span> &lt;span class="p">/&lt;/span>&lt;span class="n">norestart&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>重启完成后，还需要安装&lt;a href="https://github.com/microsoft/WSL2-Linux-Kernel">WSL 2 内核更新包&lt;/a>。&lt;/p>
+&lt;p>安装完成后，可以通过以下命令设置默认版本：&lt;/p>
+
+
+
+
+
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="n">wsl&lt;/span> &lt;span class="p">-&lt;/span>&lt;span class="n">-set-default-version&lt;/span> &lt;span class="mf">2&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="安装-nixos-wsl">安装 NixOS-WSL&lt;/h2>
+&lt;p>接下来就是到 &lt;a href="https://github.com/nix-community/NixOS-WSL/releases">NixOS-WSL 的 Release 页面&lt;/a>下载 &lt;code>nixos.wsl&lt;/code>，并通过以下命令进行安装：&lt;/p>
+
+
+
+
+
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="n">wsl&lt;/span> &lt;span class="p">-&lt;/span>&lt;span class="n">-install&lt;/span> &lt;span class="p">-&lt;/span>&lt;span class="n">-from&lt;/span>&lt;span class="o">-file&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nb">path-to&lt;/span>&lt;span class="n">-nixos&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">wsl&lt;/span>&lt;span class="p">&amp;gt;&lt;/span> &lt;span class="p">-&lt;/span>&lt;span class="n">-location&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nb">path-to&lt;/span>&lt;span class="n">-install&lt;/span>&lt;span class="p">&amp;gt;&lt;/span> &lt;span class="p">-&lt;/span>&lt;span class="n">-name&lt;/span> &lt;span class="n">NixOS&lt;/span> &lt;span class="p">-&lt;/span>&lt;span class="n">-version&lt;/span> &lt;span class="mf">2&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="alert alert-tip">
+ &lt;p class="alert-title">
+ &lt;span class="alert-icon alert-tip-icon">
+ &lt;svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+ &lt;path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z">&lt;/path>
+ &lt;/svg>
+ Tip
+ &lt;/span>
+ &lt;/p></description><content:encoded><![CDATA[<p>最近在折腾 <a href="https://nixos.org/">Nix</a>，打算在我的日常 Windows 机器上安装 NixOS，所以尝试了 <a href="https://github.com/nix-community/nixos-wsl">NixOS-WSL</a>。在安装过程中碰到了一些问题，于是就有了这篇记录。</p>
+<h2 id="启用-wsl2">启用 WSL2</h2>
+<p>对于新系统来说，可以在有<strong>管理员权限</strong>的 PowerShell 或 CMD 中运行以下命令来启用 WSL2：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span> <span class="p">-</span><span class="n">-no-distribution</span></span></span></code></pre></div><h3 id="手动安装">手动安装</h3>
+<p>对于较早的系统来说，则需要分别启用以下可选功能：</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/windows/wsl/about">适用于 Linux 的 Windows 子系统</a></li>
+</ul>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">dism</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">online</span> <span class="p">/</span><span class="nb">enable-feature</span> <span class="p">/</span><span class="n">featurename</span><span class="err">:</span><span class="nb">Microsoft-Windows</span><span class="n">-Subsystem-Linux</span> <span class="p">/</span><span class="n">all</span> <span class="p">/</span><span class="n">norestart</span><span class="p">`</span></span></span></code></pre></div><ul>
+<li><a href="https://learn.microsoft.com/en-us/windows/wsl/troubleshooting#error-0x80370102-the-virtual-machine-could-not-be-started-because-a-required-feature-is-not-installed">虚拟机平台</a></li>
+</ul>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">dism</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">online</span> <span class="p">/</span><span class="nb">enable-feature</span> <span class="p">/</span><span class="n">featurename</span><span class="err">:</span><span class="n">VirtualMachinePlatform</span> <span class="p">/</span><span class="n">all</span> <span class="p">/</span><span class="n">norestart</span></span></span></code></pre></div><p>重启完成后，还需要安装<a href="https://github.com/microsoft/WSL2-Linux-Kernel">WSL 2 内核更新包</a>。</p>
+<p>安装完成后，可以通过以下命令设置默认版本：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="p">-</span><span class="n">-set-default-version</span> <span class="mf">2</span></span></span></code></pre></div><h2 id="安装-nixos-wsl">安装 NixOS-WSL</h2>
+<p>接下来就是到 <a href="https://github.com/nix-community/NixOS-WSL/releases">NixOS-WSL 的 Release 页面</a>下载 <code>nixos.wsl</code>，并通过以下命令进行安装：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span> <span class="p">-</span><span class="n">-from</span><span class="o">-file</span> <span class="p">&lt;</span><span class="nb">path-to</span><span class="n">-nixos</span><span class="p">.</span><span class="n">wsl</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-location</span> <span class="p">&lt;</span><span class="nb">path-to</span><span class="n">-install</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-name</span> <span class="n">NixOS</span> <span class="p">-</span><span class="n">-version</span> <span class="mf">2</span></span></span></code></pre></div><div class="alert alert-tip">
+  <p class="alert-title">
+    <span class="alert-icon alert-tip-icon">
+      <svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path>
+      </svg>
+      Tip
+    </span>
+   </p>
+   <p class="alert-text">也可以直接双击 <code>nixos.wsl</code> 文件来进行安装。</p>
+</div>
+
+<p>如果你安装过 2.4.4 版本前的 NixOS-WSL，则可以通过 <code>--import</code> 来安装新版本：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="p">-</span><span class="n">-import</span> <span class="n">NixOS</span> <span class="nv">$env:USERPROFILE</span><span class="p">\</span><span class="n">NixOS</span> <span class="p">&lt;</span><span class="nb">path-to</span><span class="n">-nixos</span><span class="p">.</span><span class="n">wsl</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-version</span> <span class="mf">2</span></span></span></code></pre></div><p>安装完成后，可以通过以下命令查看已安装的发行版：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="p">-</span><span class="n">-list</span> <span class="p">-</span><span class="n">-verbose</span></span></span></code></pre></div><p>进入 NixOS-WSL：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="n">-d</span> <span class="n">NixOS</span></span></span></code></pre></div><p>设置默认的 distribution 为 NixOS：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="n">-s</span> <span class="n">NixOS</span></span></span></code></pre></div><h2 id="更新-nixos-wsl">更新 NixOS-WSL</h2>
+<p>在安装完成后，需要先运行一次以下命令来更新 channels，才能正常使用 <code>nixos-rebuild</code>：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo nix-channel --update</span></span></code></pre></div><p>如果使用的是 flake，则需要运行以下命令来更新：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nix flake update</span></span></code></pre></div><p>Rebuild 系统配置：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo nixos-rebuild switch</span></span></code></pre></div><h2 id="问题记录">问题记录</h2>
+<p>如果你在安装了 NixOS-WSL 后，发现 <code>wsl -d NixOS</code> 一直卡住不动，那么大概率你的 WSL 默认版本不是 2，可以通过以下命令来检查：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="p">-</span><span class="n">-list</span> <span class="p">-</span><span class="n">-verbose</span></span></span></code></pre></div><p>如果你看到 NixOS 的版本是 1，那么可以通过以下命令来设置 NixOS 的版本为 2：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="p">-</span><span class="n">-set-version</span> <span class="n">NixOS</span> <span class="mf">2</span></span></span></code></pre></div><p>然后应该就能正常进入 NixOS-WSL 了。</p>
+<h2 id="学习-nix">学习 Nix</h2>
+<ul>
+<li><a href="https://zero-to-nix.com/">Zero to Nix</a>，推荐</li>
+<li><a href="https://nixos-and-flakes.thiscute.world/zh/">NixOS 与 Flakes</a>，推荐</li>
+<li><a href="https://nixos-cn.org/">NixOS 中文</a></li>
+</ul>
+]]></content:encoded></item></channel></rss>

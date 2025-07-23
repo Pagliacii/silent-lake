@@ -1,13 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>scope on ୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/tags/scope/</link><description>Recent content in scope on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © since 2023</copyright><lastBuildDate>Sun, 15 Oct 2023 23:29:26 +0800</lastBuildDate><atom:link href="https://pagliacii.github.io/silent-lake/tags/scope/index.xml" rel="self" type="application/rss+xml"/><item><title>Python 列表推导式里变量未定义的问题</title><link>https://pagliacii.github.io/silent-lake/blog/a-python-list-comprehensions-scope-problem/</link><pubDate>Sun, 15 Oct 2023 23:29:26 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/a-python-list-comprehensions-scope-problem/</guid><description>&lt;p>之前在&lt;a href="https://pythonhunter.org/">捕蛇者说&lt;/a>的听众群里有人问了下面这个问题：&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Scope on ୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/tags/scope/</link><description>Recent content in Scope on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © 2025</copyright><lastBuildDate>Sun, 15 Oct 2023 23:29:26 +0800</lastBuildDate><atom:link href="https://pagliacii.github.io/silent-lake/tags/scope/index.xml" rel="self" type="application/rss+xml"/><item><title>Python 列表推导式里变量未定义的问题</title><link>https://pagliacii.github.io/silent-lake/blog/a-python-list-comprehensions-scope-problem/</link><pubDate>Sun, 15 Oct 2023 23:29:26 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/a-python-list-comprehensions-scope-problem/</guid><description>&lt;p>之前在&lt;a href="https://pythonhunter.org/">捕蛇者说&lt;/a>的听众群里有人问了下面这个问题：&lt;/p>
 &lt;blockquote>
 &lt;p>为什么 &lt;code>eval('''exec(&amp;quot;d={};[d for i in range(1)]&amp;quot;)''',{},{})&lt;/code> 会报错 NameError
-而 &lt;code>eval('''exec(&amp;quot;d={};[d for i in range(1)]&amp;quot;,None,{})''')&lt;/code> 和 &lt;code>eval('''exec(&amp;quot;d={};[d]&amp;quot;,None,{})''')&lt;/code> 都不会报错？&lt;/p>
-&lt;/blockquote>
+而 &lt;code>eval('''exec(&amp;quot;d={};[d for i in range(1)]&amp;quot;,None,{})''')&lt;/code> 和 &lt;code>eval('''exec(&amp;quot;d={};[d]&amp;quot;,None,{})''')&lt;/code> 都不会报错？&lt;/p>&lt;/blockquote>
 &lt;p>挺有趣的，为什么在有 &lt;code>d={}&lt;/code> 的情况下还会出现 &lt;code>NameError&lt;/code> 呢？下面就来分析看看。&lt;/p></description><content:encoded><![CDATA[<p>之前在<a href="https://pythonhunter.org/">捕蛇者说</a>的听众群里有人问了下面这个问题：</p>
 <blockquote>
 <p>为什么 <code>eval('''exec(&quot;d={};[d for i in range(1)]&quot;)''',{},{})</code> 会报错 NameError
-而 <code>eval('''exec(&quot;d={};[d for i in range(1)]&quot;,None,{})''')</code> 和 <code>eval('''exec(&quot;d={};[d]&quot;,None,{})''')</code> 都不会报错？</p>
-</blockquote>
+而 <code>eval('''exec(&quot;d={};[d for i in range(1)]&quot;,None,{})''')</code> 和 <code>eval('''exec(&quot;d={};[d]&quot;,None,{})''')</code> 都不会报错？</p></blockquote>
 <p>挺有趣的，为什么在有 <code>d={}</code> 的情况下还会出现 <code>NameError</code> 呢？下面就来分析看看。</p>
 <div class="alert alert-note">
   <p class="alert-title">
@@ -126,8 +124,7 @@
 </span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]}</span></span></span></code></pre></div><h2 id="等价情况">等价情况</h2>
 <p>在 <a href="https://docs.python.org/3.11/library/functions.html#exec">Python 文档</a>里关于 <code>exec</code> 函数的说明里有这么一句话：</p>
 <blockquote>
-<p>If exec gets two separate objects as globals and locals, the code will be executed as if it were embedded in a class definition.</p>
-</blockquote>
+<p>If exec gets two separate objects as globals and locals, the code will be executed as if it were embedded in a class definition.</p></blockquote>
 <p>那么上述代码就可以等价于以下代码：</p>
 
 
@@ -176,7 +173,7 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p><a href="https://en.wikipedia.org/wiki/Scope_(computer_science)">https://en.wikipedia.org/wiki/Scope_(computer_science)</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Scope_%28computer_science%29">https://en.wikipedia.org/wiki/Scope_(computer_science)</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>]]></content:encoded></item></channel></rss>
