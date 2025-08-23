@@ -82,3 +82,12 @@ email = "huangmianrui0310@gmail.com"
 [caches.getresource]
 dir = ":resourceDir"
 maxAge = -1
+
+# Configuration for AI navigation support (llms.txt)
+[outputFormats.TXT]
+  mediaType = "text/plain"
+  baseName = "llms"
+  isPlainText = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON", "TXT"]
