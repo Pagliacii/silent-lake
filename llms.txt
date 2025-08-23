@@ -1,0 +1,50 @@
+# ୧ʕ •ᴥ•ʔ୨ Silent Lake
+
+Jason's Blog
+
+## Content
+- **[安装使用 NixOS-WSL](https://pagliacii.github.io/silent-lake/blog/nixos-wsl/index.md)**
+  - Published: 2025-07-16
+  - Tags: `NixOS` `WSL` `Windows` `note` 
+
+- **[Home Row Mods](https://pagliacii.github.io/silent-lake/blog/home-row-mods/index.md)**
+  - Published: 2024-10-08
+  - Tags: `keyboard` `kanata` `tips` 
+
+- **[将 CapsLock 映射成 Ctrl 和 Escape](https://pagliacii.github.io/silent-lake/blog/using-capslock-as-ctrl-and-escape/index.md)**
+  - Published: 2024-08-18
+  - Tags: `tips` `vim/neovim` `keybindings` `windows` 
+
+- **[重置树莓派用户密码](https://pagliacii.github.io/silent-lake/blog/recover-passwd-raspberry-pi/index.md)**
+  - Published: 2024-03-31
+  - Tags: `raspberrypi` `manual` 
+
+- **[Python 之“无法访问”的属性](https://pagliacii.github.io/silent-lake/blog/debugging-cases-python-inaccessible-attribute/index.md)**
+  - Published: 2023-12-07
+  - Tags: `Python` `Debugging Cases` 
+
+- **[Python 列表推导式里变量未定义的问题](https://pagliacii.github.io/silent-lake/blog/a-python-list-comprehensions-scope-problem/index.md)**
+  - Published: 2023-10-15
+  - Tags: `python` `scope` 
+
+
+## Site Information
+
+- **Language**: 中文
+- **Base URL**: https://pagliacii.github.io/silent-lake/
+- **Last Updated**: 2025-08-23
+
+## Available Languages
+- 中文 (zh-CN)
+
+
+## Technical Features
+
+This site uses:
+- Hugo Static Site Generator
+- Bear Berry theme
+- Math rendering support (KaTeX/MathJax)
+- Diagram support (Mermaid, Kroki)
+- Multilingual content support
+- RSS feeds
+- Syntax highlighting
