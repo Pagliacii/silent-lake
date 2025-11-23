@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Scoop on ୧ʕ •ᴥ•ʔ୨ Silent Lake</title><link>https://pagliacii.github.io/silent-lake/tags/scoop/</link><description>Recent content in Scoop on ୧ʕ •ᴥ•ʔ୨ Silent Lake</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>huangmianrui0310@gmail.com (Jason Huang)</managingEditor><webMaster>huangmianrui0310@gmail.com (Jason Huang)</webMaster><copyright>[Jason Huang](https://github.com/Pagliacii) © 2025</copyright><lastBuildDate>Sun, 23 Nov 2025 18:13:58 +0800</lastBuildDate><atom:link href="https://pagliacii.github.io/silent-lake/tags/scoop/index.xml" rel="self" type="application/rss+xml"/><item><title>在 Windows 上用 Scoop 安装 ST-Link 工具</title><link>https://pagliacii.github.io/silent-lake/blog/stlink-windows-scoop/</link><pubDate>Sun, 23 Nov 2025 18:13:58 +0800</pubDate><author>huangmianrui0310@gmail.com (Jason Huang)</author><guid>https://pagliacii.github.io/silent-lake/blog/stlink-windows-scoop/</guid><description>&lt;p>最近入手了一块 &lt;a href="https://www.st.com/resource/en/user_manual/um1974-stm32-nucleo144-boards-mb1137-stmicroelectronics.pdf">STM32 Nucleo-144 board&lt;/a>，用来学习 &lt;a href="https://github.com/cpq/bare-metal-programming-guide">Bare metal programming&lt;/a>。因为板子上集成了 &lt;a href="https://www.st.com/en/development-tools/stlink-v3set.html">ST-Link&lt;/a>，所以也不需要再购买额外的编程器，虽然我还有一个 &lt;a href="https://www.muselab-tech.com/">Muse Lab&lt;/a> 的 &lt;a href="https://github.com/wuxx/nanoDAP-HS">nanoDAP-HS&lt;/a> 就是了。最后只需要安装好软件 &lt;a href="https://github.com/stlink-org/stlink">stlink&lt;/a> 和&lt;a href="https://www.st.com/en/development-tools/stsw-link009.html">驱动&lt;/a>可以正常进行烧录和调试了。&lt;/p>
+&lt;h2 id="安装驱动">安装驱动&lt;/h2>
+&lt;p>首先前往 ST 官网下载并安装驱动 &lt;a href="https://www.st.com/en/development-tools/stsw-link009.html">STSW-LINK009&lt;/a>。这一步没啥好说的，注册个账号然后下载安装就好。&lt;/p>
+&lt;h2 id="安装-stlink-工具">安装 stlink 工具&lt;/h2>
+&lt;p>可以直接从 stlink 的 &lt;a href="https://github.com/stlink-org/stlink/releases">GitHub releases&lt;/a> 下载，也可以从源码编译安装。我是通过 &lt;a href="https://scoop.sh/">Scoop&lt;/a> 来安装的。&lt;/p>
+&lt;div class="alert alert-warning">
+ &lt;p class="alert-title">
+ &lt;span class="alert-icon alert-warning-icon">
+ &lt;svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+ &lt;path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z">&lt;/path>
+ &lt;/svg>
+ Warning
+ &lt;/span>
+ &lt;/p></description><content:encoded><![CDATA[<p>最近入手了一块 <a href="https://www.st.com/resource/en/user_manual/um1974-stm32-nucleo144-boards-mb1137-stmicroelectronics.pdf">STM32 Nucleo-144 board</a>，用来学习 <a href="https://github.com/cpq/bare-metal-programming-guide">Bare metal programming</a>。因为板子上集成了 <a href="https://www.st.com/en/development-tools/stlink-v3set.html">ST-Link</a>，所以也不需要再购买额外的编程器，虽然我还有一个 <a href="https://www.muselab-tech.com/">Muse Lab</a> 的 <a href="https://github.com/wuxx/nanoDAP-HS">nanoDAP-HS</a> 就是了。最后只需要安装好软件 <a href="https://github.com/stlink-org/stlink">stlink</a> 和<a href="https://www.st.com/en/development-tools/stsw-link009.html">驱动</a>可以正常进行烧录和调试了。</p>
+<h2 id="安装驱动">安装驱动</h2>
+<p>首先前往 ST 官网下载并安装驱动 <a href="https://www.st.com/en/development-tools/stsw-link009.html">STSW-LINK009</a>。这一步没啥好说的，注册个账号然后下载安装就好。</p>
+<h2 id="安装-stlink-工具">安装 stlink 工具</h2>
+<p>可以直接从 stlink 的 <a href="https://github.com/stlink-org/stlink/releases">GitHub releases</a> 下载，也可以从源码编译安装。我是通过 <a href="https://scoop.sh/">Scoop</a> 来安装的。</p>
+<div class="alert alert-warning">
+  <p class="alert-title">
+    <span class="alert-icon alert-warning-icon">
+      <svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+      </svg>
+      Warning
+    </span>
+   </p>
+   <p class="alert-text">通过 Scoop 安装 stlink 时会有个坑，后面会提到。</p>
+</div>
+
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">$ scoop update
+</span></span><span class="line"><span class="ln">2</span><span class="cl">$ scoop install stlink
+</span></span><span class="line"><span class="ln">3</span><span class="cl">$ st-info --version
+</span></span><span class="line"><span class="ln">4</span><span class="cl">v1.8.0</span></span></code></pre></div><p>安装完成后就会有 <code>st-flash</code>，<code>st-info</code>，<code>st-trace</code> 和 <code>st-util</code> 这些命令行工具。</p>
+<h2 id="坑">坑</h2>
+<p>安装完成后，如果连接板子并执行 <code>st-info --chip-id</code>，或者 <code>st-flash --reset write</code> 之类的命令时，都会遇到下面的报错：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="ln">1</span><span class="cl">C:/Program Files (x86)/stlink/config/chips: No such file or directory
+</span></span><span class="line"><span class="ln">2</span><span class="cl">libusb: warning [winusb_get_device_list] failed to initialize device &#39;USB\VIDxxx&#39;</span></span></code></pre></div><p>这是因为 stlink 预期你会把文件解压到 <code>C:\Program Files</code> 或 <code>C:\Program Files (x86)</code> 下。</p>
+<blockquote>
+<p>From <a href="https://github.com/stlink-org/stlink#installation">stlink README</a>:</p>
+<p>However we suggest to move the unzipped application folder to <code>C:\Program Files\</code> on 32-bit systems and to <code>C:\Program Files (x86)\</code> on 64-bit systems (the toolset is 32-bit).</p></blockquote>
+<p>而 Scoop 安装的 stlink 会把相应的文件放到 <code>$SCOOP/apps/stlink/current/Program Files (x86)/</code> 下面，所以才会出现 <code>No such file or directory</code> 的报错。</p>
+<p>要解决这个问题的话也很简单，要么直接把目录复制到 <code>C:\Program Files (x86)\</code> 下，要么就创建一个符号链接：</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="ln">1</span><span class="cl"><span class="c"># 要管理员权限</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Junction</span> <span class="n">-Path</span> <span class="s2">&#34;C:\Program Files (x86)\stlink&#34;</span> <span class="n">-Target</span> <span class="s2">&#34;</span><span class="nv">$env:SCOOP</span><span class="s2">\apps\stlink\current\Program Files (x86)\stlink&#34;</span></span></span></code></pre></div><p>问题解决。</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln"> 1</span><span class="cl">$ st-flash --reset write firmware.bin 0x8000000
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">st-flash 1.8.0
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">libusb: warning <span class="o">[</span>winusb_get_device_list<span class="o">]</span> failed to initialize device <span class="s1">&#39;USB\VID_xxx&#39;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">2025-11-23T18:10:29 INFO common.c: STM32F42x_F43x: <span class="m">256</span> KiB SRAM, <span class="m">2048</span> KiB flash in at least <span class="m">16</span> KiB pages.
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">file firmware.bin md5 checksum: 597e459b0cb9649579ffd7e7deefb, stlink checksum: 0x000018ab
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">2025-11-23T18:10:29 INFO common_flash.c: Attempting to write <span class="m">508</span> <span class="o">(</span>0x1fc<span class="o">)</span> bytes to stm32 address: <span class="m">134217728</span> <span class="o">(</span>0x8000000<span class="o">)</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">EraseFlash - Sector:0x0 Size:0x4000 -&gt; Flash page at 0x8000000 erased <span class="o">(</span>size: 0x4000<span class="o">)</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">2025-11-23T18:10:30 INFO flash_loader.c: Starting Flash write <span class="k">for</span> F2/F4/F7/L4
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">2025-11-23T18:10:30 INFO flash_loader.c: Successfully loaded flash loader in sram
+</span></span><span class="line"><span class="ln">10</span><span class="cl">2025-11-23T18:10:30 INFO flash_loader.c: Clear DFSR
+</span></span><span class="line"><span class="ln">11</span><span class="cl">2025-11-23T18:10:30 INFO flash_loader.c: enabling 32-bit flash writes
+</span></span><span class="line"><span class="ln">12</span><span class="cl">2025-11-23T18:10:30 INFO common_flash.c: Starting verification of write <span class="nb">complete</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">2025-11-23T18:10:30 INFO common_flash.c: Flash written and verified! jolly good!</span></span></code></pre></div><h2 id="其他工具">其他工具</h2>
+<ul>
+<li><a href="https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain">gcc-arm-none-eabi</a>: <code>scoop install gcc-arm-none-eabi</code></li>
+<li><a href="http://www.gnu.org/software/make/">make</a>: <code>scoop install make</code></li>
+</ul>
+<h2 id="开发板">开发板</h2>
+<p><img src="/silent-lake/img/nucleo-144-board.jpg" alt="board"></p>
+<p><img src="/silent-lake/img/nucleo-144-board-shell.jpg" alt="shell"></p>
+<p><a href="https://makerworld.com.cn/zh/models/304239-nucleo-144wai-ke-stm32">外壳模型</a></p>
+<div class="alert alert-note">
+  <p class="alert-title">
+    <span class="alert-icon alert-note-icon">
+      <svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+      </svg>
+      Note
+    </span>
+  </p>
+  <p class="alert-text">最好去掉外壳上下的定位柱，因为那些柱子需要把 2.54 排针插进去
+。但由于 3D 打印的精度问题，会导致插不进去，从而装不上外壳。</p>
+</div>
+
+]]></content:encoded></item></channel></rss>

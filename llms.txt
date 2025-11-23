@@ -5,6 +5,7 @@ Jason's Blog
 ## Content
 - **[在 Windows 上用 Scoop 安装 ST-Link 工具](https://pagliacii.github.io/silent-lake/blog/stlink-windows-scoop/index.md)**
   - Published: 2025-11-23
+  - Tags: `windows` `stm32` `stlink` `scoop` 
 
 - **[安装使用 NixOS-WSL](https://pagliacii.github.io/silent-lake/blog/nixos-wsl/index.md)**
   - Published: 2025-07-16
