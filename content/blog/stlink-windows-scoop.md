@@ -3,9 +3,10 @@ title = '在 Windows 上用 Scoop 安装 ST-Link 工具'
 date = 2025-11-23T18:13:58+08:00
 toc = true
 math = false
+tags = ["windows", "stm32", "stlink", "scoop"]
 +++
 
-最近入手了一块 [STM32 Nucleo-144 board](https://www.st.com/resource/en/user_manual/um1974-stm32-nucleo144-boards-mb1137-stmicroelectronics.pdf)，用来学习 [Bare metal programming](https://github.com/cpq/bare-metal-programming-guide)。因为板子上集成了 [ST-Link](https://www.st.com/en/development-tools/stlink-v3set.html)，所以也不需要再购买额外的编程器了，虽然我还有一个 [Muse Lab](https://www.muselab-tech.com/) 的 [nanoDAP-HS](https://github.com/wuxx/nanoDAP-HS) 就是了。最后只需要安装好软件 [stlink](https://github.com/stlink-org/stlink) 和[驱动](https://www.st.com/en/development-tools/stsw-link009.html)可以正常进行烧录和调试了。
+最近入手了一块 [STM32 Nucleo-144 board](https://www.st.com/resource/en/user_manual/um1974-stm32-nucleo144-boards-mb1137-stmicroelectronics.pdf)，用来学习 [Bare metal programming](https://github.com/cpq/bare-metal-programming-guide)。因为板子上集成了 [ST-Link](https://www.st.com/en/development-tools/stlink-v3set.html)，所以也不需要再购买额外的编程器，虽然我还有一个 [Muse Lab](https://www.muselab-tech.com/) 的 [nanoDAP-HS](https://github.com/wuxx/nanoDAP-HS) 就是了。最后只需要安装好软件 [stlink](https://github.com/stlink-org/stlink) 和[驱动](https://www.st.com/en/development-tools/stsw-link009.html)可以正常进行烧录和调试了。
 
 ## 安装驱动
 
@@ -54,6 +55,22 @@ New-Item -ItemType Junction -Path "C:\Program Files (x86)\stlink" -Target "$env:
 
 问题解决。
 
+```shell
+$ st-flash --reset write firmware.bin 0x8000000
+st-flash 1.8.0
+libusb: warning [winusb_get_device_list] failed to initialize device 'USB\VID_xxx'
+2025-11-23T18:10:29 INFO common.c: STM32F42x_F43x: 256 KiB SRAM, 2048 KiB flash in at least 16 KiB pages.
+file firmware.bin md5 checksum: 597e459b0cb9649579ffd7e7deefb, stlink checksum: 0x000018ab
+2025-11-23T18:10:29 INFO common_flash.c: Attempting to write 508 (0x1fc) bytes to stm32 address: 134217728 (0x8000000)
+EraseFlash - Sector:0x0 Size:0x4000 -> Flash page at 0x8000000 erased (size: 0x4000)
+2025-11-23T18:10:30 INFO flash_loader.c: Starting Flash write for F2/F4/F7/L4
+2025-11-23T18:10:30 INFO flash_loader.c: Successfully loaded flash loader in sram
+2025-11-23T18:10:30 INFO flash_loader.c: Clear DFSR
+2025-11-23T18:10:30 INFO flash_loader.c: enabling 32-bit flash writes
+2025-11-23T18:10:30 INFO common_flash.c: Starting verification of write complete
+2025-11-23T18:10:30 INFO common_flash.c: Flash written and verified! jolly good!
+```
+
 ## 其他工具
 
 - [gcc-arm-none-eabi](https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain): `scoop install gcc-arm-none-eabi`
@@ -61,13 +78,13 @@ New-Item -ItemType Junction -Path "C:\Program Files (x86)\stlink" -Target "$env:
 
 ## 开发板
 
-![board](https://github.com/user-attachments/assets/4b35aaab-4dcc-4868-82d6-58b452f23fff)
+![board](/img/nucleo-144-board.jpg)
 
-![shell](https://github.com/user-attachments/assets/a3591b56-dd42-451a-94d0-8851b97ea123)
+![shell](/img/nucleo-144-board-shell.jpg)
 
 [外壳模型](https://makerworld.com.cn/zh/models/304239-nucleo-144wai-ke-stm32)
 
 {{< note >}}
-最好去掉外壳上下的定位柱，因为那些柱子需要把 2.54 排针插进去，
+最好去掉外壳上下的定位柱，因为那些柱子需要把 2.54 排针插进去
 。但由于 3D 打印的精度问题，会导致插不进去，从而装不上外壳。
 {{< /note >}}
