@@ -12,7 +12,7 @@ tags = ["windows", "stm32", "stlink", "scoop"]
 
 首先前往 ST 官网下载并安装驱动 [STSW-LINK009](https://www.st.com/en/development-tools/stsw-link009.html)。这一步没啥好说的，注册个账号然后下载安装就好。
 
-## 安装 stlink 工具
+## 安装 stlink
 
 可以直接从 stlink 的 [GitHub releases](https://github.com/stlink-org/stlink/releases) 下载，也可以从源码编译安装。我是通过 [Scoop](https://scoop.sh/) 来安装的。
 
@@ -80,11 +80,15 @@ EraseFlash - Sector:0x0 Size:0x4000 -> Flash page at 0x8000000 erased (size: 0x4
 
 ![board](/img/nucleo-144-board.jpg)
 
+{{< tip >}}
+开发板上边的那一块就是集成的 ST-Link。
+{{< /tip >}}
+
 ![shell](/img/nucleo-144-board-shell.jpg)
 
-[外壳模型](https://makerworld.com.cn/zh/models/304239-nucleo-144wai-ke-stm32)
-
-{{< note >}}
+{{< tip >}}
 最好去掉外壳上下的定位柱，因为那些柱子需要把 2.54 排针插进去
 。但由于 3D 打印的精度问题，会导致插不进去，从而装不上外壳。
-{{< /note >}}
+{{< /tip >}}
+
+[外壳模型](https://makerworld.com.cn/zh/models/304239-nucleo-144wai-ke-stm32)
